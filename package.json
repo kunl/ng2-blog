@@ -20,12 +20,14 @@
   "author": "kunl",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kunl/node-express-ng2-blog/issues"
+    "url": "https://github.com/kunl/ng2-blog/issues"
   },
-  "homepage": "https://github.com/kunl/node-express-ng2-blog#readme",
+  "homepage": "https://github.com/kunl/ng2-blog#readme",
   "dependencies": {
+    "body-parser": "^1.14.1",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
+    "express-session": "^1.12.0",
     "mysql": "^2.9.0"
   }
 }

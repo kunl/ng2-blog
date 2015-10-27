@@ -6,6 +6,6 @@ var login = require('./login');
 
 
 router.get('/', index);
-router.get('/login', login);
+router.use('/login', login);
 
 module.exports = router;
