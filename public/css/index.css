@@ -5,6 +5,9 @@ body{
     margin: 0;
     font-size: 14px;
 }
+section.main{
+    min-height: 700px;
+}
 
 footer{
     padding: 3px;
@@ -19,4 +22,12 @@ footer a:hover{
 }
 footer .copyright {
     text-align: center;
+}
+
+
+.login-form{
+    width: 300px;
+    padding-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
 }
