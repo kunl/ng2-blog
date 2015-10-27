@@ -1,0 +1,31 @@
+{
+  "name": "node-express-ng2-blog",
+  "version": "1.0.0",
+  "description": "express + ng2 实现简易blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kunl/node-express-ng2-blog.git"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "angular2",
+    "EcmaScript2015",
+    "es6"
+  ],
+  "author": "kunl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kunl/node-express-ng2-blog/issues"
+  },
+  "homepage": "https://github.com/kunl/node-express-ng2-blog#readme",
+  "dependencies": {
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "mysql": "^2.9.0"
+  }
+}
