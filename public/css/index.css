@@ -1,0 +1,22 @@
+li{
+    list-style: non;
+}
+body{
+    margin: 0;
+    font-size: 14px;
+}
+
+footer{
+    padding: 3px;
+    background: #555;
+    color: #fff;
+}
+footer a{
+    color: #fff;
+}
+footer a:hover{
+    color: #eee;
+}
+footer .copyright {
+    text-align: center;
+}
