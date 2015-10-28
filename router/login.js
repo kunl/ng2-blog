@@ -1,5 +1,6 @@
-var express = require('express');
-var router = express.Router();
+import { Router } from 'express';
+
+let router = Router();
 
 router.get('/', function(req, res){
     res.render('login', {
@@ -7,9 +8,21 @@ router.get('/', function(req, res){
     });
 });
 
+let user = {
+    name: 'test',
+    passwd: 'test'
+};
+
 router.post('/', function(req, res){
-    res.send(req.body)
+    console.log('登录用户为:', req.body);
+   
+    if(req.body.name == user.name && req.body.passwd == user.passwd){
+        req.session.user = user;
+        console.log(user.name, '登录成功');
+        res.redirect('/');
+    }
+
 });
 
 
-module.exports = router;
+export default router;

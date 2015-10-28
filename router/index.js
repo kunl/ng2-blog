@@ -1,11 +1,12 @@
-var express = require('express');
-var router = express.Router();
+import { Router } from 'express';
 
-var index = require('./home');
-var login = require('./login');
+import home from './home';
+import login from './login';
+
+let router = Router();
+router.get('/', home);
 
 
-router.get('/', index);
 router.use('/login', login);
 
-module.exports = router;
+export default router;
