@@ -27,6 +27,8 @@ app.use(session({
 
 app.use(router);
 
-app.listen(2000, ()=> console.log('running on port 2000 ...'));
+let port = process.env.PORT || 3000;
+
+app.listen(port, ()=> console.log(`running on port ${port} ...`));
 
 export default app;
