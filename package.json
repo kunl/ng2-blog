@@ -4,8 +4,6 @@
   "description": "express + ng2 实现简易blog",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,15 +24,11 @@
   },
   "homepage": "https://github.com/kunl/ng2-blog#readme",
   "dependencies": {
-    "babel": "*",
+    "babel": "^5.8.29",
     "body-parser": "^1.14.1",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "express-session": "^1.12.0",
-    "mysql": "^2.9.0",
-    "sequelize": "^3.13.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.8.0"
+    "mysql": "^2.9.0"
   }
 }

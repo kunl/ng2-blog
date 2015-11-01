@@ -1,5 +1,3 @@
-import post from '../models/post';
-
 export default (req, res) => {
     if(req.session.user){
         res.render('index', {
