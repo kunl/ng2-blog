@@ -2,7 +2,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import session from 'express-session';
-import router from './router';
+import router from './router/index';
 import path from 'path';
 
 let app = express();
@@ -27,7 +27,7 @@ app.use(session({
 
 app.use(router);
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 4000;
 
 app.listen(port, ()=> console.log(`running on port ${port} ...`));
 
