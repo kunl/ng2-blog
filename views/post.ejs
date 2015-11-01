@@ -1,0 +1,15 @@
+<%# '注释' %>
+<%- include('common/head') -%>
+
+<%= post.title %>
+
+
+<article class="post-detial">
+    <h3> <%= post.title %> </h3>
+    <p><%= post. createDate %></p>
+    <p class="content">
+        <%= post.content %>
+    </p>
+</article>
+
+<%- include('common/footer') -%>

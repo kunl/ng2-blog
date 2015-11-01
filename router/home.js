@@ -1,13 +1,21 @@
-import post from '../models/post';
+import Post from '../models/post';
+
 
 export default (req, res) => {
-    if(req.session.user){
-        res.render('index', {
-            title:'index',
-            user: req.session.user
-        });
-    }else{
-        res.redirect('login');
-    }
-    
+
+    let post = new Post({
+        title: 'post.title',
+        content: 'post.content',
+        author: 'post.author'
+    });
+
+    Post.getTen().then((result) => {
+
+        res.render('home', {
+            title: '主页',
+            posts: result
+        })
+
+    })
+
 };

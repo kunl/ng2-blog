@@ -27,7 +27,7 @@ app.use(session({
 
 app.use(router);
 
-let port = process.env.PORT || 4000;
+let port = process.env.PORT || 3000;
 
 app.listen(port, ()=> console.log(`running on port ${port} ...`));
 

@@ -5,11 +5,15 @@ body{
     margin: 0;
     font-size: 14px;
 }
+html,body{
+    height: 100%;
+}
 section.main{
-    min-height: 700px;
+    height: 100%;
 }
 
 footer{
+    margin-top: -50px;
     padding: 3px;
     background: #555;
     color: #fff;

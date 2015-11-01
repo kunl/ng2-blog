@@ -10,4 +10,4 @@ let connection = mysql.createConnection({
 
 connection.connect();
 
-export default function(){}
+export default connection
