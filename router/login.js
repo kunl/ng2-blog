@@ -4,9 +4,27 @@ import User from '../models/user';
 let router = Router();
 
 router.get('/', (req, res) => {
-    res.render('login', {
-        title: '登陆'
-    });
+    let loginUser = req.body;
+
+    if(loginUser.user){
+        User.get(loginUser.user).then((user) => {
+            if(loginUser.user == user.user && loginUser.passwd == user.passwd){
+                req.session.user = user;
+                console.log(user.user, '登录成功');
+                res.redirect('/admin');
+            }else{
+                res.render('login', {
+                    title: '登陆'
+                });
+            }
+        });
+    }else{
+        res.render('login', {
+            title: '登陆'
+        });
+    }
+    
+    
 });
 
 

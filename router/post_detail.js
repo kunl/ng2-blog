@@ -1,7 +1,8 @@
 import Post from '../models/post';
 
-export default (req, res) => {
+export default (req, res, next) => {
     let title = req.params.title;
+    console.log(req.params)
     Post.getPostByTitle(title).then((post) =>{
         if(post){
             res.render('post', {
@@ -9,9 +10,7 @@ export default (req, res) => {
                 post: post
             })
         }else{
-            res.status(404).render('404', {
-                title: 404
-            })
+            next()
         }
         
     })
