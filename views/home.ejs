@@ -9,8 +9,11 @@
     <% posts.forEach(function(post){ %>
         <li class="post">
             <h2><a href="<%= post.title %>"><%= post.title %></a></h2>
-            <p> <%= post.content %> </p>
-            <footer> <%= post.author %> <small><%= post.updateDate %> </small></footer>
+            <p> <%= post.content %></p>
+            <footer> 
+                <%= post.author %> <span class="time"><%= post.updateDate %></span>
+                <a class="fr" href="<%= post.title %>">more...</a>
+            </footer>
         </li>
     <% }); %>
     </ul>

@@ -8,9 +8,14 @@ body{
 html,body{
     min-height: 100%;
 }
+
+.fr {
+    float: right;
+}
 section.main{
     min-height: 100%;
     padding-bottom: 100px;
+
 }
 
 .footer{
@@ -37,6 +42,8 @@ section.main{
     margin-right: auto;
 }
 
+
+/*post list*/
 .post-list {
     min-width: 700px;
     max-width: 900px;
@@ -44,6 +51,52 @@ section.main{
 }
 .post-list .post {
     margin: 20px 0;
-    padding: 20px;
-    border: 1px solid #ddd;
+    padding: 20px 40px;
+    border-radius: 2px;
+    border: 1px solid #eee;
+    box-shadow: 1px 1px 0 #bbb;
+}
+.post-list .post h2 {
+    transition: all 0.3s;
+}
+.post-list .post h2:hover {
+    margin-left: 0.1em;
+
+}
+.post-list .post h2 a {
+    text-decoration: none;
+    color: #444;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s;
+}
+.post-list .post h2 a:hover{
+    border-bottom: 1px solid #aaa;
+    color: #F7A17F;
+} 
+.post-list .post img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+/*post detail*/
+.post-detail {
+    min-width: 700px;
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 650px;
+}
+.post-detail .content p {
+    text-indent: 2em;
+}
+.post-detail .post-title {
+    padding: 20px 0;
+    border-bottom: 1px solid #dfdfdf;
+    text-align: center;
+}
+.post-detail .time {
+    font-size: small;
+    color: #cdcdcd;
+}
+.post-detail .content {
+    padding: 0 20px 80px;
 }
