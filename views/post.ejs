@@ -4,12 +4,15 @@
 <%= post.title %>
 
 
-<article class="post-detial">
-    <h3> <%= post.title %> </h3>
-    <p><%= post. createDate %></p>
-    <p class="content">
+<article class="post-detail">
+    <h3 class="post-title"> <%= post.title %> </h3>
+    <p class="time"><span class="fr">最近更新:<%= post.updateDate %> </span><span>发表于:<%= post.createDate %> </span> </p>
+    <div class="content">
         <%= post.content %>
-    </p>
+    </div>
+    <div class="disqus">
+        <%- include('post/disqus') -%>
+    </div>
 </article>
 
 <%- include('common/footer') -%>
