@@ -16,7 +16,8 @@ export default (req, res) => {
         })
         res.render('home', {
             title: '主页',
-            posts: result
+            posts: result,
+            desc: 'kunl 的前端博客'
         })
 
     })
