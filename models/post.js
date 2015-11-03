@@ -35,11 +35,11 @@ export default class {
 
     static getTen() {
 
-        let colums = ['title', 'content', 'updateDate', 'author'];
+        let colums = 'title, left(content, 5), updateDate, author';
 
         return new Promise( (resolve, reject) => {
             pool.getConnection((err, connection) => {
-                connection.query('SELECT ?? FROM post LIMIT 0,10', [colums], (err, result) => {
+                connection.query(`SELECT ${ colums } FROM post LIMIT 0,10`, (err, result) => {
                     if(err){
                         reject(err);
                     }
@@ -52,7 +52,7 @@ export default class {
     }
 
     static getPosts() {
-        let colums = ['title', 'content', 'createDate', 'author', 'tag'];
+        let colums = ['title', 'content', 'createDate', 'updateDate', 'author', 'tag'];
         return new Promise( (resolve, reject) => {
             pool.getConnection((err, connection) => {
                 connection.query('SELECT ?? FROM post', [colums], (err, result) =>{
