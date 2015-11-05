@@ -9,13 +9,13 @@
     <% posts.forEach(function(post){ %>
         <li class="post">
             <h2>
-                <span class="time fr"><%= post.updateDate %></span>
+                <span class="time fr"><%= post.createDate %></span>
                 <a href="<%= post.title %>"><%= post.title %></a>
             </h2>
             <p> <%= post.content %></p>
             <footer> 
                 <% post.tags.forEach(function(tag){ %>
-                <a class="tag"></a>
+                <a class="tag" href="/tag/<%= tag %>"><%= tag %></a>
                 <% }); %>
                 <a class="fr more" href="<%= post.title %>">more...</a>
             </footer>

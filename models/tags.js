@@ -34,13 +34,7 @@ export default class {
         
     }
 
-    static getHomePost() {
-
-        let colums = `
-            SELECT
-            title, content, updateDate, author, posts.tagId, tagName
-            FROM posts, tags where posts.tagId = tags.tagId LIMIT 0,6
-            `;
+    static getPostByTag(tag) {
 
         let contentTags =`
             SELECT GROUP_CONCAT(distinct tagname) AS tags,title, content, createDate ,author, posts.id
@@ -50,6 +44,7 @@ export default class {
             RIGHT JOIN posts
             ON posttag.postid = posts.id
             GROUP BY posts.id
+            WHERE tagname = '${tag}'
             LIMIT 0,6
         `;
         return new Promise( (resolve, reject) => {
@@ -58,6 +53,7 @@ export default class {
                     if(err){
                         reject(err);
                     }
+                    console.log(result)
 
                     resolve(result.map((post) => {
                         post.createDate = dateformat(post.createDate, 'yyyy年mm月dd日 HH:MM:ss');
@@ -71,11 +67,17 @@ export default class {
         });
     }
 
-    static getPosts() {
-        let colums = ['title', 'content', 'createDate', 'updateDate', 'author', 'tag'];
+    static getTags() {
+        let sql = `
+            SELECT tagName,tags.tagId
+            FROM tags
+            left JOIN postTag
+            ON tags.tagId = postTag.tagId
+            GROUP BY tags.tagId
+        `;
         return new Promise( (resolve, reject) => {
             pool.getConnection((err, connection) => {
-                connection.query('SELECT ?? FROM posts', [colums], (err, result) =>{
+                connection.query(sql, (err, result) =>{
                 if(err){
                         reject(err);
                     }
@@ -86,25 +88,5 @@ export default class {
         });
     }
 
-    static getPostByTitle(title) {
-
-        let sql = `
-            SELECT title, content, createDate, updateDate, author
-            FROM posts where title = '${title}'
-        `;
-        console.log(title, 'db');
-
-        return new Promise((resolve, reject) => {
-            pool.getConnection((err, connection) => {
-                connection.query(sql, (err, post) => {
-                    if(err){
-                        reject(err);
-                    }
-                    resolve(post && post[0] );
-                    connection.release();
-                });
-            });
-            
-        });
-    }
+    
 }

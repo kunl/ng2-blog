@@ -50,18 +50,18 @@ section.main{
     margin: 0 auto;
 }
 .post-list .post {
-    margin: 20px 0;
+    margin: 30px 0;
     padding: 20px 40px;
     border-radius: 2px;
-    border: 1px solid #eee;
-    box-shadow: 1px 1px 0 #bbb;
+    border-top: 1px solid #f5f5f5;
+    border-bottom: 1px solid #eee;
+    box-shadow: 6px 8px 6px #f5f5f5;
 }
 .post-list .post h2 {
     transition: all 0.3s;
 }
 .post-list .post h2:hover {
     margin-left: 0.1em;
-
 }
 .post-list .post h2 a {
     text-decoration: none;
@@ -71,11 +71,22 @@ section.main{
 }
 .post-list .post h2 a:hover{
     border-bottom: 1px solid #aaa;
-    color: #F7A17F;
+    color: #444;
 } 
 .post-list .post img {
     max-width: 100%;
     vertical-align: top;
+}
+.post-list footer,.post-list .time{
+    font-size: small;
+    color: #bbb;
+}
+
+.post-list .more{
+    color: #bbb;
+}
+.post-list .more:hover{
+    color: #666;
 }
 
 /*post detail*/
