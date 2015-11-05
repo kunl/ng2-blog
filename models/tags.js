@@ -2,36 +2,23 @@ import pool from './db';
 import dateformat from 'dateformat';
 
 export default class {
-    constructor(post){
-        this.title = post.title;
-        this.content = post.content;
-        this.author = post.author;
-        this.createDate= new Date()
+    constructor(tag){
+        this.tagName = tag.tagName;
     }
 
     save(){
-
-        let post = {
-            title: this.title,
-            content: this.content,
-            author: this.autor,
-            createDate: this.createDate,
-            updateDate: new Date()
-        }
-        console.log('插入文章', this.title);
+        console.log('新建tag', this.tagName);
         return new Promise((resolve, reject) => {
             pool.getConnection((err, connection) =>{
-                connection.query('INSERT INTO posts SET ?', post, (err, result) => {
+                connection.query('INSERT INTO tags SET ?', tag, (err, result) => {
                     if(err){
                         reject(err);
                     }
                     resolve(result);
                     connection.release();
-            });
-        })
+                });
+            })
         });
-        
-        
     }
 
     static getPostByTag(tag) {
@@ -47,6 +34,7 @@ export default class {
             WHERE tagname = '${tag}'
             LIMIT 0,6
         `;
+        console.log('tag', tag)
         return new Promise( (resolve, reject) => {
             pool.getConnection((err, connection) => {
                 connection.query(contentTags, (err, result) => {
