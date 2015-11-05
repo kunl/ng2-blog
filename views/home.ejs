@@ -8,11 +8,16 @@
     <ul>
     <% posts.forEach(function(post){ %>
         <li class="post">
-            <h2><a href="<%= post.title %>"><%= post.title %></a></h2>
+            <h2>
+                <span class="time fr"><%= post.updateDate %></span>
+                <a href="<%= post.title %>"><%= post.title %></a>
+            </h2>
             <p> <%= post.content %></p>
             <footer> 
-                <%= post.author %> <span class="time"><%= post.updateDate %></span>
-                <a class="fr" href="<%= post.title %>">more...</a>
+                <% post.tags.forEach(function(tag){ %>
+                <a class="tag"></a>
+                <% }); %>
+                <a class="fr more" href="<%= post.title %>">more...</a>
             </footer>
         </li>
     <% }); %>
