@@ -33,9 +33,13 @@
     "express": "^4.13.3",
     "express-session": "^1.12.0",
     "mysql": "^2.9.0",
-    "sequelize": "^3.13.0"
+    "sequelize": "^3.13.0",
+    "angular2":"*",
+    "systemjs":"*"
   },
   "devDependencies": {
-    "nodemon": "^1.8.0"
+    "nodemon": "^1.8.0",
+    "typescript": "*",
+    "live-server": "*"
   }
 }
