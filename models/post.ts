@@ -1,36 +1,43 @@
 import pool from './db';
-import dateformat from 'dateformat';
+import * as dateformat from 'dateformat';
+import {Post} from  '../typings'
+
+export class PostModel implements Post {
+    title = ''
+    content = ''
+    author = ''
+    createDate = new Date()
+    updateDate = new Date()
+
+    constructor(post: Post){
+        this.title = post.title
+        this.content = post.content
+        this.author = post.author
+    }
+}
 
 export default class {
-    constructor(post){
-        this.title = post.title;
-        this.content = post.content;
-        this.author = post.author;
-        this.createDate= new Date()
+    post:Post = null
+
+    constructor(post: Post){
+        this.post = new PostModel(post);
     }
 
     save(){
 
-        let post = {
-            title: this.title,
-            content: this.content,
-            author: this.autor,
-            createDate: this.createDate,
-            updateDate: new Date()
-        }
-        console.log('插入文章', this.title);
+        console.log('插入文章', this.post.title);
         return new Promise((resolve, reject) => {
-            pool.getConnection((err, connection) =>{
-                connection.query('INSERT INTO posts SET ?', post, (err, result) => {
-                    if(err){
-                        reject(err);
-                    }
-                    resolve(result);
-                    connection.release();
-            });
-        })
+            let post = this.post
+                pool.getConnection((err, connection) =>{
+                    connection.query('INSERT INTO posts SET ?', post, (err, result) => {
+                        if(err){
+                            reject(err);
+                        }
+                        resolve(result);
+                        connection.release();
+                });
+            })
         });
-        
         
     }
 
@@ -54,12 +61,15 @@ export default class {
         `;
         return new Promise( (resolve, reject) => {
             pool.getConnection((err, connection) => {
+                if(err){
+                    throw err;
+                }
                 connection.query(contentTags, (err, result) => {
                     if(err){
                         reject(err);
                     }
 
-                    resolve(result.map((post) => {
+                    resolve(result.map((post:Post) => {
                         post.createDate = dateformat(post.createDate, 'yyyy年mm月dd日 HH:MM:ss');
                         post.tags = post.tags ? post.tags.split(',') : [];
                         return post;
@@ -76,7 +86,7 @@ export default class {
         return new Promise( (resolve, reject) => {
             pool.getConnection((err, connection) => {
                 connection.query('SELECT ?? FROM posts', [colums], (err, result) =>{
-                if(err){
+                    if(err){
                         reject(err);
                     }
                     resolve(result);

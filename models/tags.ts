@@ -1,8 +1,10 @@
 import pool from './db';
-import dateformat from 'dateformat';
+import * as dateformat from 'dateformat';
 
 export default class {
-    constructor(tag){
+    tagName: string;
+
+    constructor(tag:{tagName: string}){
         this.tagName = tag.tagName;
     }
 

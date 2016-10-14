@@ -1,0 +1,15 @@
+"use strict";
+var express_1 = require("express");
+var home_1 = require("./home");
+var login_1 = require("./login");
+var admin_1 = require("./admin");
+var post_detail_1 = require("./post_detail");
+var tag_1 = require("./tag");
+var router = express_1.Router();
+router.get('/', home_1["default"]);
+router.get('/:title', post_detail_1["default"]);
+router.get('/tag/:tagName', tag_1["default"]);
+router.use('/admin', admin_1["default"]);
+router.use('/login', login_1["default"]);
+exports.__esModule = true;
+exports["default"] = router;

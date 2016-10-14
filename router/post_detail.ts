@@ -1,7 +1,8 @@
 import Post from '../models/post';
-import dateformat from 'dateformat';
+import * as dateformat from 'dateformat';
+import * as express from 'express';
 
-export default (req, res, next) => {
+export default (req: express.Request, res:express.Response, next:express.NextFunction) => {
     let title = req.params.title;
     console.log(req.params)
     Post.getPostByTitle(title).then((post) =>{
