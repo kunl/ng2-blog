@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
-import home from './home';
+import { home } from './home';
+import { user } from './user';
 import login from './login';
 import admin from './admin';
 
@@ -9,13 +10,13 @@ import tag from './tag';
 
 let router = Router();
 
+router.use('/', home);
+router.use('/user', user);
+// router.get('/:title', postDetail);
+// router.get('/tag/:tagName', tag)
 
-router.get('/', home);
-router.get('/:title', postDetail);
-router.get('/tag/:tagName', tag)
-
-router.use('/admin', admin);
-router.use('/login', login);
+// router.use('/admin', admin);
+// router.use('/login', login);
 
 
 export default router;

@@ -1,21 +1,46 @@
 "use strict";
-var db_1 = require("./db");
-var default_1 = (function () {
-    function default_1() {
+var _this = this;
+var mongoose_1 = require("mongoose");
+var db_1 = require("../db");
+var _schema = new mongoose_1.Schema({
+    id: String,
+    created: Date,
+    updated: Date,
+    name: String,
+    age: Number
+})
+    .pre('save', function (next) {
+    _this.updated = new Date;
+    next();
+});
+var _model = db_1["default"].model('Users', _schema);
+var User = (function () {
+    function User() {
     }
-    default_1.get = function (user) {
+    User.findById = function (id) {
         return new Promise(function (resolve, reject) {
-            db_1["default"].createConnection(function (err, connection) {
-                connection.query('SELECT ?? FROM user where user = ?', [['user', 'passwd', 'nickName'], user], function (err, result) {
-                    if (err) {
-                        reject(err);
-                    }
-                    resolve(result[0]);
-                });
-            });
+            _model.findById(id).exec().then(function (u) { return u; });
         });
     };
-    return default_1;
+    User.create = function (user) {
+        return new Promise(function (resolve, reject) {
+            _model.create(user).then(function (u) { return u; });
+        });
+    };
+    return User;
 }());
-exports.__esModule = true;
-exports["default"] = default_1;
+exports.User = User;
+// export default class {
+//     static get(user){
+//         return new Promise((resolve, reject) => {
+//             pool.createConnection((err, connection) => {
+//                 connection.query('SELECT ?? FROM user where user = ?', [['user', 'passwd', 'nickName'], user], (err, result) => {
+//                     if(err){
+//                         reject(err);
+//                     }
+//                     resolve(result[0]);
+//                 })
+//             })
+//         });
+//     }
+// }

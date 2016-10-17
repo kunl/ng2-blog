@@ -1,23 +1,24 @@
-import Post from '../models/post';
 import * as express from 'express';
 
-export default (req: express.Request, res: express.Response) => {
+import { Router } from 'express';
+let router = Router();
 
-    let post = new Post({
-        title: 'post.title',
-        content: 'post.content',
-        author: 'post.author'
-    });
+/* GET home page. */
+router.get('/', function (req, res, next) {
 
-    Post.getHomePost().then((result: any) => {
-        res.render('home', {
-            title: '主页',
-            posts: result,
-            desc: 'kunl 的前端博客'
-        })
 
-        
+    // Post.getHomePost().then((result: any) => {
+    //     res.render('home', {
+    //         title: '主页',
+    //         posts: result,
+    //         desc: 'kunl 的前端博客'
+    //     })
 
-    })
 
-};
+
+    // })
+
+    res.render('index', { title: 'Express' });
+});
+
+export let home = router;
