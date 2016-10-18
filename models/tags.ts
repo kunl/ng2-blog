@@ -1,4 +1,3 @@
-import pool from './db';
 import * as dateformat from 'dateformat';
 
 export default class {
@@ -11,15 +10,15 @@ export default class {
     save(){
         console.log('新建tag', this.tagName);
         return new Promise((resolve, reject) => {
-            pool.getConnection((err, connection) =>{
-                connection.query('INSERT INTO tags SET ?', tag, (err, result) => {
-                    if(err){
-                        reject(err);
-                    }
-                    resolve(result);
-                    connection.release();
-                });
-            })
+            // pool.getConnection((err, connection) =>{
+            //     connection.query('INSERT INTO tags SET ?', tag, (err, result) => {
+            //         if(err){
+            //             reject(err);
+            //         }
+            //         resolve(result);
+            //         connection.release();
+            //     });
+            // })
         });
     }
 

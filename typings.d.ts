@@ -1,3 +1,4 @@
+
 export {Post}
 declare class Post {
     //标题

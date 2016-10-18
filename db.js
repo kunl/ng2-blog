@@ -1,5 +1,5 @@
 "use strict";
-var mongoose_1 = require("mongoose");
+var mongoose_1 = require('mongoose');
 var mongoose = new mongoose_1.Mongoose();
 var uri = 'mongodb://localhost/blog';
 mongoose.connect(uri, function (err) {

@@ -1,34 +1,32 @@
 import { Router } from 'express';
 let router = Router();
 
-import { User } from '../models';
+import { User, IUser } from '../models';
 
 /* GET users listing. */
-router.get('/', (req, res, next) => {
+router.get('/user', (req, res, next) => {
 
-    // User.create({
-    //     id: '222',
-    //     age: 25,
-    //     created: new Date,
-    //     name: 'teetet'
-    // }).then((e) => {
-    //      res.send('respond with a resource user');
+    // User.create(<IUser>{
+    //     id: '231452',
+    //     name: 'ssgsgdgdgd名字',
+    //     age: 30
     // })
-
+    
+    User.findTop()
+    
     console.log('### 查询 users ###')
-    User.findById('222').then(user => {
+    User.findOne().then((user:IUser) => {
         console.log(user);
-        res.send('ok')
-    })
 
-//   user.save((err)=> {
-//     if(err){
-//       console.log(err)
-//     }
+        // res.send('ok')
+        res.render('index', {title: user.name})
+    }, (err:any) => {
+        console.log(err)
+        res.status(500)
+    });
 
-//     res.send('respond with a resource user');
-//   })
- });
+
+});
 
 
 export let user = router;

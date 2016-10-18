@@ -1,5 +1,5 @@
 "use strict";
-var post_1 = require("../../models/post");
+var post_1 = require('../../models/post');
 exports.__esModule = true;
 exports["default"] = function (req, res) {
     var title = req.params.title;

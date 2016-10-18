@@ -1,28 +1,28 @@
 import { Router } from 'express';
-import User from '../models/user';
+// import User from '../models/user';
 
 let router = Router();
 
 router.get('/', (req, res) => {
     let loginUser = req.body;
 
-    if(loginUser.user){
-        User.get(loginUser.user).then((user) => {
-            if(loginUser.user == user.user && loginUser.passwd == user.passwd){
-                req.session.user = user;
-                console.log(user.user, '登录成功');
-                res.redirect('/admin');
-            }else{
-                res.render('login', {
-                    title: '登陆'
-                });
-            }
-        });
-    }else{
-        res.render('login', {
-            title: '登陆'
-        });
-    }
+    // if(loginUser.user){
+    //     User.get(loginUser.user).then((user) => {
+    //         if(loginUser.user == user.user && loginUser.passwd == user.passwd){
+    //             req.session.user = user;
+    //             console.log(user.user, '登录成功');
+    //             res.redirect('/admin');
+    //         }else{
+    //             res.render('login', {
+    //                 title: '登陆'
+    //             });
+    //         }
+    //     });
+    // }else{
+    //     res.render('login', {
+    //         title: '登陆'
+    //     });
+    // }
     
     
 });
@@ -33,16 +33,16 @@ router.post('/', (req, res) => {
     
     let loginUser = req.body;
 
-    User.get(loginUser.user).then((user) => {
-        console.log(user)
-        if(loginUser.user == user.user && loginUser.passwd == user.passwd){
-            req.session.user = user;
-            console.log(user.user, '登录成功');
-            res.redirect('/admin');
-        }else{
-            res.send('行行好，再想想密码吧！');
-        }
-    });
+    // User.get(loginUser.user).then((user) => {
+    //     console.log(user)
+    //     if(loginUser.user == user.user && loginUser.passwd == user.passwd){
+    //         req.session.user = user;
+    //         console.log(user.user, '登录成功');
+    //         res.redirect('/admin');
+    //     }else{
+    //         res.send('行行好，再想想密码吧！');
+    //     }
+    // });
     
 
 });

@@ -5,7 +5,7 @@ import Post from '../../models/post';
 let router = Router();
 
 router.get('/', (req, res) => {
-    let user = req.session.user;
+    let user = req.session['user'];
 
     if(user && user.user){
         res.render('admin', {
@@ -24,12 +24,12 @@ router.post('/post', (req, res) =>{
     if(req.body.title && req.body.content) {
         let post = new Post(req.body);
 
-        post.save().then((result) => {
-            console.log(result, '结果')
-                res.status(200).redirect('/admin');
-            if(!result.message){
-            }
-        });
+        // post.save().then((result) => {
+        //     console.log(result, '结果')
+        //         res.status(200).redirect('/admin');
+        //     if(!result.message){
+        //     }
+        // });
     }
     console.log(req.body)
 

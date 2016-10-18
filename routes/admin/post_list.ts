@@ -1,6 +1,7 @@
+import * as express from 'express';
 import Post from '../../models/post';
 
-export default (req, res) => {
+export default <express.RequestHandler> function (req, res) {
     let title = req.params.title;
     Post.getPostByTitle(title).then((post) =>{
         if(post){

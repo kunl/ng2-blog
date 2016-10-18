@@ -2,16 +2,19 @@ import { Router } from 'express';
 
 import { home } from './home';
 import { user } from './user';
-import login from './login';
-import admin from './admin';
+import { post_router } from './post';
+// import login from './login';
+// import admin from './admin';
 
-import postDetail from './post_detail';
-import tag from './tag';
+// import postDetail from './post_detail';
+// import tag from './tag';
 
 let router = Router();
 
 router.use('/', home);
-router.use('/user', user);
+router.use(user);
+router.use(post_router);
+//sdgd
 // router.get('/:title', postDetail);
 // router.get('/tag/:tagName', tag)
 

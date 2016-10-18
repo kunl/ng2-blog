@@ -1,18 +1,13 @@
-<%# '注释' %>
-<%- include('common/head') -%>
-
-<%= post.title %>
 
 
-<article class="post-detail">
-    <h3 class="post-title"> <%= post.title %> </h3>
-    <p class="time"><span class="fr">最近更新:<%= post.updateDate %> </span><span>发表于:<%= post.createDate %> </span> </p>
-    <div class="content">
-        <%= post.content %>
-    </div>
-    <div class="disqus">
-        <%- include('post/disqus') -%>
-    </div>
-</article>
+<h3>post list</h3>
 
-<%- include('common/footer') -%>
+<%= title %>
+
+<form method="post">
+    <input type="text" name="title">
+    <br>
+    <textarea name="content" id="" cols="30" rows="10"></textarea>
+
+    <button>提交</button>
+</form>

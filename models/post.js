@@ -5,12 +5,12 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 // import pool from './db';
-var dateformat = require("dateformat");
-var mongoose = require("mongoose");
-exports.Schema = mongoose.Schema;
+var dateformat = require('dateformat');
+var mongoose = require('mongoose');
+var mongoose_1 = require('mongoose');
 exports.ObjectId = mongoose.Schema.Types.ObjectId;
 exports.Mixed = mongoose.Schema.Types.Mixed;
-var schema = new exports.Schema({
+var schema = new mongoose_1.Schema({
     name: {
         type: String,
         required: true
@@ -145,7 +145,7 @@ exports.RepositoryBase = RepositoryBase;
 var HeroRepository = (function (_super) {
     __extends(HeroRepository, _super);
     function HeroRepository() {
-        return _super.call(this, exports.HeroSchema) || this;
+        _super.call(this, exports.HeroSchema);
     }
     return HeroRepository;
 }(RepositoryBase));

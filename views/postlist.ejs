@@ -1,0 +1,18 @@
+<%# '注释' %>
+<%- include('common/head') -%>
+
+<%= post.title %>
+
+
+<article class="post-detail">
+    <h3 class="post-title"> <%= post.title %> </h3>
+    <p class="time"><span class="fr">最近更新:<%= post.updateDate %> </span><span>发表于:<%= post.createDate %> </span> </p>
+    <div class="content">
+        <%= post.content %>
+    </div>
+    <div class="disqus">
+        <%- include('post/disqus') -%>
+    </div>
+</article>
+
+<%- include('common/footer') -%>

@@ -14,4 +14,15 @@ var _schema = new mongoose_1.Schema({
     _this.updated = new Date;
     next();
 });
-var User = mongoose.model('Users', _schema);
+/**
+ * 实例上的方法
+ * let user = new User();
+ * user.findTop();
+ */
+_schema.methods.findTop = function () {
+    console.log(333);
+};
+_schema.statics.findTop = function () {
+    console.log('find all');
+};
+exports.User = mongoose.model('Users', _schema);

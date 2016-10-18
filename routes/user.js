@@ -1,27 +1,23 @@
 "use strict";
-var express_1 = require("express");
+var express_1 = require('express');
 var router = express_1.Router();
-var models_1 = require("../models");
+var models_1 = require('../models');
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-    // User.create({
-    //     id: '222',
-    //     age: 25,
-    //     created: new Date,
-    //     name: 'teetet'
-    // }).then((e) => {
-    //      res.send('respond with a resource user');
+router.get('/user', function (req, res, next) {
+    // User.create(<IUser>{
+    //     id: '231452',
+    //     name: 'ssgsgdgdgd名字',
+    //     age: 30
     // })
+    models_1.User.findTop();
     console.log('### 查询 users ###');
-    models_1.User.findById('222').then(function (user) {
+    models_1.User.findOne().then(function (user) {
         console.log(user);
-        res.send('ok');
+        // res.send('ok')
+        res.render('index', { title: user.name });
+    }, function (err) {
+        console.log(err);
+        res.status(500);
     });
-    //   user.save((err)=> {
-    //     if(err){
-    //       console.log(err)
-    //     }
-    //     res.send('respond with a resource user');
-    //   })
 });
 exports.user = router;

@@ -1,8 +1,8 @@
-import { Document, Schema } from 'mongoose';
+import { Document, Schema, Model } from 'mongoose';
 import * as mongoose from 'mongoose';
 
 
-export interface IUser extends Document{
+export interface IUser extends Document {
     id: string;
     created: Date;
     updated?: Date;
@@ -23,4 +23,22 @@ let _schema = new Schema({
     next();
 })
 
-let User = mongoose.model<IUser>('Users', _schema);
+
+/**
+ * 实例上的方法
+ * let user = new User();
+ * user.findTop();
+ */
+_schema.methods.findTop = function(){
+    console.log(333)
+}
+
+_schema.statics.findTop = () => {
+    console.log('find all')
+}
+
+interface UserModel extends Model<IUser> {
+    findTop(): Promise<IUser []>
+}
+
+export let User = <UserModel>mongoose.model<IUser>('Users', _schema);
