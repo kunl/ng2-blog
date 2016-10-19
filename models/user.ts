@@ -1,6 +1,7 @@
 import { Document, Schema, Model } from 'mongoose';
 import * as mongoose from 'mongoose';
 
+import db from '../db';
 
 export interface IUser extends Document {
     id: string;
@@ -29,9 +30,6 @@ let _schema = new Schema({
  * let user = new User();
  * user.findTop();
  */
-_schema.methods.findTop = function(){
-    console.log(333)
-}
 
 _schema.statics.findTop = () => {
     console.log('find all')
@@ -41,4 +39,4 @@ interface UserModel extends Model<IUser> {
     findTop(): Promise<IUser []>
 }
 
-export let User = <UserModel>mongoose.model<IUser>('Users', _schema);
+export let User = <UserModel>db.model<IUser>('Users', _schema);

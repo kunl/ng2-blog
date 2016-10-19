@@ -12,8 +12,12 @@ router.get('/user', (req, res, next) => {
     //     age: 30
     // })
     
-    User.findTop()
     
+    User.findOne().exec((err, user) => {
+        console.log(err)
+        console.log(user)
+    })
+
     console.log('### 查询 users ###')
     User.findOne().then((user:IUser) => {
         console.log(user);

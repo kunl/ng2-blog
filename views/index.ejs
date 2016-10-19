@@ -1,11 +1,655 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/css/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+
+  <title>kunl | <%= title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="kunl">
+  <meta property="og:url" content="https://kunl.in/index.html">
+  <meta property="og:site_name" content="kunl">
+  <meta property="og:description">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="kunl">
+  <meta name="twitter:description">
+
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1460484793_302541.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+
+
+</head>
+
+<body>
+  <div id="wrap">
+
+
+
+    <div class="outer">
+      <section id="main">
+
+        <article id="post-2016/ng2-attribute-directive" class="article article-type-post" itemscope itemprop="blogPost">
+
+          <div class="article-inner">
+
+
+            <header class="article-header">
+              <a href="/2016/ng2-attribute-directive/" class="article-date">
+                <time datetime="2016-05-08T10:37:38.000Z" itemprop="datePublished">2016-05-08</time>
+              </a>
+
+
+              <h1 itemprop="name">
+                <a class="article-title" href="/2016/ng2-attribute-directive/">ng2-attribute-directive</a>
+              </h1>
+
+
+            </header>
+
+            <div class="article-entry" itemprop="articleBody">
+
+              <p>Attribute directive 可以改变 DOM 元素的行为或者表现。<br>本文中我们将<br> . 写一个 Attribute directive 来改变 DOM 的文本颜色<br> . <a href="#创建一个简单的-attribute-directive">在模板中应用 Attribuet directive</a><br>                . <a href="#响应用户的事件">对用户的事件做出响应</a><br> . 通过 数据绑定(data binding) 向 directive 中传递数据</p>
+              <h4 id="directive-概述">
+                <a href="#directive-概述" class="headerlink" title="directive 概述"></a>directive 概述</h4>
+              <p>Angular 中有三种 directive</p>
+              <ol>
+                <li>Component 组件</li>
+                <li>Structural directive 结构化 directive</li>
+                <li>Attribute directive 属性 directive </li>
+              </ol>
+              <p>组件(Component)，实际上是一个有模板的 directive。它是三种 directive 最普通的一个，在我们应用中写的最多。</p>
+              <p><a href="https://angular.io/docs/ts/latest/guide/structural-directives.html" target="_blank" rel="external">结构化 directive </a>                (Structural directive)，通过添加或者删除一些 DOM 元素来改变 DOM 的布局，<a href="https://angular.io/docs/ts/latest/guide/template-syntax.html#ngFor"
+                  target="_blank" rel="external">NgFor</a> 和 <a href="https://angular.io/docs/ts/latest/guide/template-syntax.html#ngIf"
+                  target="_blank" rel="external">NgIf</a> 就是最熟悉的两个例子。</p>
+              <p>属性 directive(Attribute directive)，改变元素的展示方式和行为动作。例如内置的 <a href="https://angular.io/docs/ts/latest/guide/template-syntax.html#!#ngStyle"
+                  target="_blank" rel="external">NgStyle</a> 指令，我们可以同时改变几个元素的样式(css)。</p>
+              <hr>
+              <p>接下来完成一个 attribute directive， 通过这个指令来，当用户鼠标停在一个 DOM 元素的时候改变当前元素的背景颜色</p>
+              <p>通过 <a href="https://angular.io/docs/ts/latest/guide/template-syntax.html#!#ngStyle" target="_blank" rel="external">StyleBinding</a>                这个内置的指令可以设置元素的背景</p>
+              <figure class="highlight html">
+                <table>
+                  <tr>
+                    <td class="gutter">
+                      <pre><span class="line">1</span><br></pre>
+                    </td>
+                    <td class="code">
+                      <pre><span class="line"><span class="tag">&lt;<span class="name">p</span> [<span class="attr">style.background</span>]=
+                        <span
+                          class="string">'"green"'</span>&gt;</span>绿色<span class="tag">&lt;/<span class="name">p</span>&gt;</span>
+                          </span><br></pre>
+                    </td>
+                  </tr>
+                </table>
+              </figure>
+              <p>当让了，创建一个指令不会仅仅这么简单。我们还需要在用户鼠标悬停的时候，改变元素的背景来响应用户的操作。</p>
+              <hr>
+              <h4 id="创建一个简单的-attribute-directive">
+                <a href="#创建一个简单的-attribute-directive" class="headerlink" title="创建一个简单的 attribute directive"></a>创建一个简单的 attribute directive</h4>
+              <p>一个 attribute 指令至少需要一个由 @Directive 装饰器注释的 controller class。@DIrective 装饰器内指定一个 选择器(css selector), 指令就是通过这个选择器来识别相应的
+                DOM 元素。这个 controller class 内实现了指令所需要的行为动作。</p>
+              <p>创建一个新的文件并命名为 color.directive.ts， 代码如下<br>
+                <figure class="highlight typescript">
+                  <table>
+                    <tr>
+                      <td class="gutter">
+                        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br>
+                          <span
+                            class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br>
+                            <span
+                              class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre>
+                      </td>
+                      <td class="code">
+                        <pre><span class="line"><span class="keyword">import</span> &#123; Directive ,ElementRef, Input &#125;
+                          from <span class="string">'@angular/core'</span>;</span><br><span class="line"></span><br>
+                          <span
+                            class="line">@Directive(&#123;</span><br><span class="line">    selector: <span class="string">'[color]'</span>                            <span class="comment">// css 选择器，可以匹配到 &lt;p color&gt; *** &lt;/p&gt;</span></span><br>
+                            <span
+                              class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span>                              <span class="keyword">class</span> ColorDirective &#123;</span><br><span class="line">    <span class="keyword">constructor</span>(el:
+                              ElementRef) &#123;</span><br><span class="line">        el.nativeElement.style.color = <span class="string">'green'</span>;</span><br>
+                              <span
+                                class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre>
+                      </td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
+              <p>首先我们从 Angular 库中引入了一些东西。例如 Directive 来创建 @Directive() 装饰器，把 ElementRef 注入到当前指令的构造函数(constructor)中，方便我们获得当前的
+                DOM 元素。</p>
+              <p>然后用一对象定义了指令的元数据(metadata)作为参数传入 @Directive 装饰器内。一个 @Directive 装饰器通常通过 css <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors"
+                  target="_blank" rel="external">属性选择器</a>来和模板中的html元素建立关系，如 <code>[color]</code>, Angular 将会定位到模板内所有包含 attribute
+                为 <code>heiglight</code> 的元素。</p>
+              <p>紧挨着装饰器下面，我们定义了一个 controller class 其内部包含了指令的相关逻辑。同时为了方便其他组件引用，我们把它导出(export)。</p>
+              <p>Angular 为定位到的每一个元素创建了指令(directive)的 controller class 实例，并且在构造函数中注入 Angular ElementRef。ElementRef 是一个 服务(service)，我们通过它的
+                nativeElement 属性直接获取到 DOM 元素。然后我们就可以通过 DOM 元素的 style.backgroundColor 接口来设置元素的背景颜色。</p>
+              <hr>
+              <h4 id="如何使用-attribute-directive">
+                <a href="#如何使用-attribute-directive" class="headerlink" title="如何使用 attribute directive"></a>如何使用 attribute directive</h4>
+              <p>创建 app.component.html 文件，代码如下：<br>
+                <figure class="highlight html">
+                  <table>
+                    <tr>
+                      <td class="gutter">
+                        <pre><span class="line">1</span><br></pre>
+                      </td>
+                      <td class="code">
+                        <pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>尝试一下 attribute directive，这里是
+                          <span
+                            class="tag">&lt;<span class="name">span</span> <span class="attr">color</span>&gt;</span>绿色文字<span class="tag">&lt;/<span class="name">span</span>&gt;</span>
+                            <span
+                              class="tag">&lt;/<span class="name">p</span>&gt;</span>
+                              </span><br></pre>
+                      </td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
+              <p>创建 app.component.ts 文件，引入 app.component.html 模板文件，代码如下：<br>
+                <figure class="highlight typescript">
+                  <table>
+                    <tr>
+                      <td class="gutter">
+                        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br>
+                          <span
+                            class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br>
+                            <span
+                              class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br>
+                              <span
+                                class="line">12</span><br><span class="line">13</span><br></pre>
+                      </td>
+                      <td class="code">
+                        <pre><span class="line"><span class="keyword">import</span> &#123; Component &#125; from <span class="string">'@angular/core'</span>;</span><br>
+                          <span
+                            class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; ColorDirective &#125;
+                            from <span class="string">'./color.directive'</span>;</span><br><span class="line"></span><br>
+                            <span
+                              class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'my-app'</span>,</span><br>
+                              <span
+                                class="line"> templateUrl: <span class="string">'app/app.component.html'</span>,</span><br><span class="line">    directives: [ColorDirective]</span><br>
+                                <span
+                                  class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span>                                  <span class="keyword">class</span> AppComponent &#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;&#125;</span><br>
+                                  <span
+                                    class="line">&#125;</span><br></pre>
+                      </td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
+              <p>用 import 引入我们的 ColorDirective class， 添加到当前的组件元数据(metadata)配置中, 这样 Anuglar 就可以识别出模板中我们定义了 color 属性的 span 元素。</p>
+              <p><a href="http://kunl.in/ng2/#/color">具体效果</a>，<a href="https://github.com/kunl/ng2/blob/gh-pages/app/example/%2Bcolors/color.demo.ts"
+                  target="_blank" rel="external">相关源码</a><br><img src="http://78rem6.com1.z0.glb.clouddn.com/2016-05-08_230409.png"
+                  alt="ColorDirective"><br>来回顾一下 Angular 做了些什么，首先 Angular 定位到了包含 <code>color</code> 属性的元素，紧接着创建了 ColorDirective
+                class 的实例，注入当前元素的引用(ElementRef)，最后在构造函数中设置 <code>&lt;span&gt;</code> 元素的颜色为 green。</p>
+              <h4 id="对用户的事件做出响应">
+                <a href="#对用户的事件做出响应" class="headerlink" title="对用户的事件做出响应"></a>对用户的事件做出响应</h4>
+              <p>我们不应仅限于简单的设置元素的颜色，指令也应该响应用户的事件，比如鼠标悬停的时候改变元素颜色。<br>我们需要<br> 1 监听用户的鼠标移入移出动作<br> 2 通过设置或还原元素的颜色来响应用户的动作</p>
+              <p>给指令的元数据(metadata)配置 host 属性，配置两个鼠标动作到指令内部的对应方法上。<br>
+                <figure class="highlight typescript">
+                  <table>
+                    <tr>
+                      <td class="gutter">
+                        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br>
+                          <span
+                            class="line">4</span><br></pre>
+                      </td>
+                      <td class="code">
+                        <pre><span class="line">host: &#123;</span><br><span class="line">  <span class="string">'(mouseenter)'</span>:
+                          <span class="string">'onMouseEnter()'</span>,</span><br><span class="line">  <span class="string">'(mouseleave)'</span>:
+                          <span class="string">'onMouseLeave()'</span></span><br><span class="line">&#125;</span><br></pre>
+                      </td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
+              <p>host 属性可以匹配到 attribute 的宿主 DOM 元素的引用，例如上文中的 <code>&lt;span color&gt;绿色文字&lt;/span&gt;</code>。如果用旧的语法，我们应该给
+                elementRef.nativeElement 添加事件。<br>但是这带来了新的问题<br> 1 必须正确的添加事件监听(listeners)<br> 2 当指令销毁的时候，需要手动取消事件(listeners)以便释放内存<br>                3 需要直接与 DOM API 交互，手动操作 DOM。但是我们通常是避免直接操作 DOM<br>所以，Angular 提供了 host 来避免以上问题。</p>
+              <p>接下来，来实现刚才的两个鼠标事件<br>
+                <figure class="highlight typescript">
+                  <table>
+                    <tr>
+                      <td class="gutter">
+                        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br>
+                          <span
+                            class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre>
+                      </td>
+                      <td class="code">
+                        <pre><span class="line">onMouseEnter() &#123; <span class="keyword">this</span>.setColor(<span class="string">'yellow'</span>);
+                          &#125;</span><br><span class="line">onMouseLeave() &#123; <span class="keyword">this</span>.setColor(
+                          <span
+                            class="string">'green'</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>                            setColor(color) &#123;</span><br><span class="line">    <span class="keyword">this</span>.el.style.color
+                            = color;</span><br><span class="line">&#125;</span><br></pre>
+                      </td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
+              <p>完整的代码如下：<br>
+                <figure class="highlight typescript">
+                  <table>
+                    <tr>
+                      <td class="gutter">
+                        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br>
+                          <span
+                            class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br>
+                            <span
+                              class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br>
+                              <span
+                                class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br>
+                                <span
+                                  class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br>
+                                  <span
+                                    class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br>
+                                    <span
+                                      class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre>
+                      </td>
+                      <td class="code">
+                        <pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; Directive
+                          ,ElementRef, Input &#125; from <span class="string">'@angular/core'</span>;</span><br><span class="line"></span><br>
+                          <span
+                            class="line">@Directive(&#123;</span><br><span class="line">    selector: <span class="string">'[color]'</span>,
+                            <span class="comment">// css 选择器，可以匹配到 &lt;p color&gt; *** &lt;/p&gt;</span></span><br>
+                            <span
+                              class="line"> host: &#123;</span><br><span class="line">        <span class="string">'(mouseenter)'</span>:
+                              <span class="string">'onMouseEnter()'</span>,</span><br><span class="line">        <span class="string">'(mouseleave)'</span>:
+                              <span class="string">'onMouseLeave()'</span></span><br><span class="line">    &#125;</span><br>
+                              <span
+                                class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span>                                <span class="keyword">class</span> ColorDirective &#123;</span><br><span class="line">    <span class="keyword">private</span>                                el: HTMLElement;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">constructor</span>(el:
+                                ElementRef) &#123;</span><br><span class="line">        <span class="keyword">this</span>.el
+                                = el.nativeElement;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">this</span>.el.style.color
+                                = <span class="string">'green'</span>;</span><br><span class="line">    &#125;</span><br>
+                                <span
+                                  class="line"> </span><br><span class="line">    onMouseEnter() &#123; <span class="keyword">this</span>.setColor(
+                                  <span
+                                    class="string">'yellow'</span>); &#125;</span><br><span class="line">    onMouseLeave() &#123; <span class="keyword">this</span>.setColor(
+                                    <span
+                                      class="string">'green'</span>); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>                                      setColor(color) &#123;</span><br><span class="line">        <span class="keyword">this</span>.el.style.color
+                                      = color;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre>
+                      </td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
+              <p>效果入下</p>
+              <video src="http://78rem6.com1.z0.glb.clouddn.com/ng2-color-directive-hover5534.wmv"></video>
+
+              <h4 id="通过-Input-绑定数据-data-binding">
+                <a href="#通过-Input-绑定数据-data-binding" class="headerlink" title="通过 Input 绑定数据(data binding)"></a>通过 Input 绑定数据(data binding)</h4>
+              <p>当前我们的 ColorDirective 的颜色是固定不变的，我们应该自定义初始化的颜色，如下：<br>
+                <figure class="highlight html">
+                  <table>
+                    <tr>
+                      <td class="gutter">
+                        <pre><span class="line">1</span><br></pre>
+                      </td>
+                      <td class="code">
+                        <pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">color</span>=
+                          <span
+                            class="string">"myColor"</span>&gt;</span>第一个 directive<span class="tag">&lt;/<span class="name">p</span>&gt;</span>
+                            </span><br></pre>
+                      </td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
+              <p>升级当前的 ColorDirective，通过 Input 来获取外界的颜色值<br>最终代码如下：<br>
+                <figure class="highlight typescript">
+                  <table>
+                    <tr>
+                      <td class="gutter">
+                        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br>
+                          <span
+                            class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br>
+                            <span
+                              class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br>
+                              <span
+                                class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br>
+                                <span
+                                  class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br>
+                                  <span
+                                    class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br>
+                                    <span
+                                      class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br>
+                                      <span
+                                        class="line">28</span><br><span class="line">29</span><br></pre>
+                      </td>
+                      <td class="code">
+                        <pre><span class="line"><span class="keyword">import</span> &#123; Directive ,ElementRef, Input &#125;
+                          from <span class="string">'@angular/core'</span>;</span><br><span class="line"></span><br>
+                          <span
+                            class="line">@Directive(&#123;</span><br><span class="line">    selector: <span class="string">'[color]'</span>,
+                            <span class="comment">// css 选择器，可以匹配到 &lt;p color&gt; *** &lt;/p&gt;</span></span><br>
+                            <span
+                              class="line"> host: &#123;</span><br><span class="line">        <span class="string">'(mouseenter)'</span>:
+                              <span class="string">'onMouseEnter()'</span>,</span><br><span class="line">        <span class="string">'(mouseleave)'</span>:
+                              <span class="string">'onMouseLeave()'</span></span><br><span class="line">    &#125;</span><br>
+                              <span
+                                class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span>                                <span class="keyword">class</span> ColorDirective &#123;</span><br><span class="line">    <span class="keyword">private</span>                                _defaultColor = <span class="string">'yellow'</span>;</span><br><span class="line">    <span class="keyword">private</span>                                el: HTMLElement;</span><br><span class="line">    </span><br><span class="line">    @Input(<span class="string">'color'</span>)
+                                myColor: <span class="built_in">string</span>;</span><br><span class="line">    </span><br>
+                                <span
+                                  class="line"> <span class="keyword">constructor</span>(el: ElementRef) &#123;</span><br><span class="line">        <span class="keyword">this</span>.el
+                                  = el.nativeElement;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">this</span>.el.style.color
+                                  = <span class="keyword">this</span>.myColor || <span class="keyword">this</span>._defaultColor;</span><br>
+                                  <span
+                                    class="line"> &#125;</span><br><span class="line">    </span><br><span class="line">    onMouseEnter() &#123; <span class="keyword">this</span>.setColor(
+                                    <span
+                                      class="string">'yellow'</span>); &#125;</span><br><span class="line">    onMouseLeave() &#123; <span class="keyword">this</span>.setColor(
+                                      <span
+                                        class="string">'green'</span>); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>                                        setColor(color) &#123;</span><br><span class="line">        <span class="keyword">this</span>.el.style.color
+                                        = color;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre>
+                      </td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
+              <p>@Input 装饰器，通过 color 把元素的 color 属性值传递到 directive 中。与 myColor 绑定，当一个元素没有设置 color 值的时候，directive 会给默认给它设置成 yellow。</p>
+              <p>最终版的 app.component.html 模板文件：<br>
+                <figure class="highlight html">
+                  <table>
+                    <tr>
+                      <td class="gutter">
+                        <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre>
+                      </td>
+                      <td class="code">
+                        <pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>尝试一下
+                          attribute directive，这里是<span class="tag">&lt;<span class="name">span</span> [<span class="attr">color</span>]=
+                          <span
+                            class="string">"appColor"</span>&gt;</span>绿色文字<span class="tag">&lt;/<span class="name">span</span>&gt;</span>
+                            <span
+                              class="tag">&lt;/<span class="name">p</span>&gt;</span>
+                              </span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> (<span class="attr">click</span>)=
+                              <span
+                                class="string">"appColor = 'blue' "</span>&gt;</span>切换<span class="tag">&lt;/<span class="name">button</span>&gt;</span>
+                                </span><br></pre>
+                      </td>
+                    </tr>
+                  </table>
+                </figure>
+              </p>
+              <p>在 <code>[color]=&quot;appColor&quot;</code>中 appColor 是数据源，不需要主动声明；color 是数据绑定的目标，必须在 directive 中声明，否则报错。</p>
+
+
+            </div>
+            <footer class="article-footer">
+
+
+              <a href="http://kunl.in/2016/ng2-attribute-directive/#disqus_thread" class="article-comment-link">评论</a>
+
+
+              <ul class="article-tag-list">
+                <li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular2/">angular2</a></li>
+              </ul>
+
+            </footer>
+          </div>
+
+        </article>
+
+
+
+        <article id="post-2016/angular2 demo" class="article article-type-post" itemscope itemprop="blogPost">
+
+          <div class="article-inner">
+
+
+            <header class="article-header">
+              <a href="/2016/angular2 demo/" class="article-date">
+                <time datetime="2016-04-28T16:00:00.000Z" itemprop="datePublished">2016-04-29</time>
+              </a>
+
+
+              <h1 itemprop="name">
+                <a class="article-title" href="/2016/angular2 demo/">angular2 demo</a>
+              </h1>
+
+
+            </header>
+
+            <div class="article-entry" itemprop="articleBody">
+
+              <p>目前 angular2 还是beta(16) 阶段，本文内容尽可能跟随官方最新版本。</p>
+              <p><a href="https://kunl.github.io/ng2" target="_blank" rel="external">angular2 demo</a></p>
+              <p><a href="http://kunl.in/ng2/#/tabs">tab 选项卡</a></p>
+              <p><a href="http://kunl.in/ng2/#/dynamic">动态加载组件</a></p>
+
+
+            </div>
+            <footer class="article-footer">
+
+
+              <a href="http://kunl.in/2016/angular2 demo/#disqus_thread" class="article-comment-link">评论</a>
+
+
+              <ul class="article-tag-list">
+                <li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular2/">angular2</a></li>
+              </ul>
+
+            </footer>
+          </div>
+
+        </article>
+
+
+
+        <article id="post-2016/弄了个hexo主题" class="article article-type-post" itemscope itemprop="blogPost">
+
+          <div class="article-inner">
+
+
+            <header class="article-header">
+              <a href="/2016/弄了个hexo主题/" class="article-date">
+                <time datetime="2016-04-13T16:00:00.000Z" itemprop="datePublished">2016-04-14</time>
+              </a>
+
+
+              <h1 itemprop="name">
+                <a class="article-title" href="/2016/弄了个hexo主题/">弄了个hexo主题</a>
+              </h1>
+
+
+            </header>
+
+            <div class="article-entry" itemprop="articleBody">
+
+              <p>博客又荒废好久了，貌似都没有认真写过。这几年也接触过不少博客系统，但是内容却没有沉淀下来。接触前端这些年也能力自己高了，基于 hexo 平台再次开张了。记录一些前端工作学习中的心得，也方便和大家交流<br>。<br>开始新的主题，也就是现在你看到的这个博客，github
+                地址 <a href="https://github.com/kunl/hexo-theme-kunl" target="_blank" rel="external">hexo-theme-kunl</a>。
+                主题还在开发中，整体风格比较简洁，也木有太多的功能。慢慢打磨，不说成精品，自己看着顺眼吧。</p>
+
+
+            </div>
+            <footer class="article-footer">
+
+
+              <a href="http://kunl.in/2016/弄了个hexo主题/#disqus_thread" class="article-comment-link">评论</a>
+
+
+              <ul class="article-tag-list">
+                <li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li>
+              </ul>
+
+            </footer>
+          </div>
+
+        </article>
+
+
+
+        <article id="post-2014/2014-06-05" class="article article-type-post" itemscope itemprop="blogPost">
+
+          <div class="article-inner">
+
+
+            <header class="article-header">
+              <a href="/2014/2014-06-05/" class="article-date">
+                <time datetime="2014-06-05T02:41:32.000Z" itemprop="datePublished">2014-06-05</time>
+              </a>
+
+
+              <h1 itemprop="name">
+                <a class="article-title" href="/2014/2014-06-05/">git 常用命令整理</a>
+              </h1>
+
+
+            </header>
+
+            <div class="article-entry" itemprop="articleBody">
+
+              <figure class="highlight plain">
+                <table>
+                  <tr>
+                    <td class="gutter">
+                      <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br>
+                        <span
+                          class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br>
+                          <span
+                            class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre>
+                    </td>
+                    <td class="code">
+                      <pre><span class="line">查看分支 git branch -a</span><br><span class="line">创建分支 git branch name</span><br>
+                        <span
+                          class="line">切换分支 git checkout name</span><br><span class="line">创建并切换 git checkout -b name</span><br><span class="line">合并某个到当前 git merge name</span><br>
+                          <span
+                            class="line">删除分支 git branch -d name</span><br><span class="line">提交分支 git push origin name</span><br>
+                            <span
+                              class="line"></span><br><span class="line">创建tag  git tag name</span><br><span class="line">创建并指定标签信息  git tag -a name -m &apos;&apos;</span><br></pre>
+                    </td>
+                  </tr>
+                </table>
+              </figure>
+
+            </div>
+            <footer class="article-footer">
+
+
+              <a href="http://kunl.in/2014/2014-06-05/#disqus_thread" class="article-comment-link">评论</a>
+
+
+              <ul class="article-tag-list">
+                <li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li>
+              </ul>
+
+            </footer>
+          </div>
+
+        </article>
+
+
+
+        <article id="post-2014/事件委托" class="article article-type-post" itemscope itemprop="blogPost">
+
+          <div class="article-inner">
+
+
+            <header class="article-header">
+              <a href="/2014/事件委托/" class="article-date">
+                <time datetime="2014-05-19T16:00:00.000Z" itemprop="datePublished">2014-05-20</time>
+              </a>
+
+
+              <h1 itemprop="name">
+                <a class="article-title" href="/2014/事件委托/">事件委托</a>
+              </h1>
+
+
+            </header>
+
+            <div class="article-entry" itemprop="articleBody">
+
+              <p>###利用冒泡的原理，把事件添加到父级上，触发执行效果<br> 1提高性能<br> 2新添加的对象也有事件</p>
+              <pre><code>event对象的事件源，任何事件中，被操作的事件对象。
+    IE：event.srcElement
+    w3c:event.target
+    通过nodeName判断当前源的标签名
+</code></pre>
+              <iframe width="100%" height="440px" src="http://jsfiddle.net/le720/Ux4SL/embedded/" allowfullscreen="allowfullscreen"
+                frameborder="0"></iframe>
+
+
+            </div>
+            <footer class="article-footer">
+
+
+              <a href="http://kunl.in/2014/事件委托/#disqus_thread" class="article-comment-link">评论</a>
+
+
+              <ul class="article-tag-list">
+                <li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li>
+              </ul>
+
+            </footer>
+          </div>
+
+        </article>
+
+
+
+        <article id="post-2014/九宫格" class="article article-type-post" itemscope itemprop="blogPost">
+
+          <div class="article-inner">
+
+
+            <header class="article-header">
+              <a href="/2014/九宫格/" class="article-date">
+                <time datetime="2014-05-19T16:00:00.000Z" itemprop="datePublished">2014-05-20</time>
+              </a>
+
+
+              <h1 itemprop="name">
+                <a class="article-title" href="/2014/九宫格/">九宫格布局</a>
+              </h1>
+
+
+            </header>
+
+            <div class="article-entry" itemprop="articleBody">
+
+              <p><a class="jsbin-embed" href="http://jsbin.com/zuzuv/3/embed?html,output" target="_blank" rel="external">JS Bin</a></p>
+              <script src="http://static.jsbin.com/js/embed.js"></script>
+
+
+            </div>
+            <footer class="article-footer">
+
+
+              <a href="http://kunl.in/2014/九宫格/#disqus_thread" class="article-comment-link">评论</a>
+
+
+              <ul class="article-tag-list">
+                <li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li>
+                <li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li>
+              </ul>
+
+            </footer>
+          </div>
+
+        </article>
+
+        <nav id="page-nav">
+          <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next"
+            href="/page/2/">Next &raquo;</a>
+        </nav>
+
+      </section>
+    </div>
+
+    
+  </div>
+
+  <script>
+  var disqus_shortname = 'kunlin';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+</body>
+
 </html>

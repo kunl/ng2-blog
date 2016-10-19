@@ -7,6 +7,8 @@ import * as logger from 'morgan';
 import * as cookieParser from  'cookie-parser';
 import { json, urlencoded } from 'body-parser';
 
+import './db';
+
 import  router  from './routes';
 
 let app = <express.Application>express();

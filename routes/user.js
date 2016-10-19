@@ -9,7 +9,10 @@ router.get('/user', function (req, res, next) {
     //     name: 'ssgsgdgdgd名字',
     //     age: 30
     // })
-    models_1.User.findTop();
+    models_1.User.findOne().exec(function (err, user) {
+        console.log(err);
+        console.log(user);
+    });
     console.log('### 查询 users ###');
     models_1.User.findOne().then(function (user) {
         console.log(user);

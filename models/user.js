@@ -1,7 +1,7 @@
 "use strict";
 var _this = this;
 var mongoose_1 = require('mongoose');
-var mongoose = require('mongoose');
+var db_1 = require('../db');
 var _schema = new mongoose_1.Schema({
     id: String,
     created: Date,
@@ -19,10 +19,7 @@ var _schema = new mongoose_1.Schema({
  * let user = new User();
  * user.findTop();
  */
-_schema.methods.findTop = function () {
-    console.log(333);
-};
 _schema.statics.findTop = function () {
     console.log('find all');
 };
-exports.User = mongoose.model('Users', _schema);
+exports.User = db_1["default"].model('Users', _schema);

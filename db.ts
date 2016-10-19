@@ -1,8 +1,10 @@
 import { Mongoose } from 'mongoose';
 
-let mongoose = new Mongoose();
 
-const uri = 'mongodb://localhost/blog';
+let mongoose = new Mongoose();
+mongoose.Promise = global.Promise;
+
+export const uri = 'mongodb://localhost/blog';
 
 mongoose.connect(uri, (err) => {
     if(err) {

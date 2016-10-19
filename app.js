@@ -5,6 +5,7 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var body_parser_1 = require('body-parser');
+require('./db');
 var routes_1 = require('./routes');
 var app = express();
 // view engine setup

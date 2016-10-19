@@ -5,26 +5,31 @@ var _router = express_1.Router();
 /* GET users listing. */
 _router.get('/list', function (req, res, next) {
     console.log('### 查询 users ###');
-    models_1.User.findById('222').then(function (user) {
+    models_1.Post.find().exec().then(function (user) {
         console.log(user);
-        // res.send('ok')
-        res.render('index', { title: user.name });
+        res.render('post', { title: '列表', list: user });
     }, function (err) {
         console.log(err);
         res.status(500);
     });
 });
 _router.get('/post', function (req, res, next) {
-    res.render('post', { title: 'post list aaa' });
+    res.render('post', { title: 'post list aaaaaa' });
 });
 _router.post('/post', function (req, res, next) {
     console.log('### 新建 post ###');
     console.log(req.body);
-    res.send(req.body);
+    models_1.Post.create(req.body).then(function (post) {
+        console.log(post);
+        res.redirect('list');
+    }, function (err) {
+        console.log(err);
+        res.status(500);
+        res.end();
+    });
 });
 _router.put('/post', function (req, res, next) {
 });
 _router.delete('/post', function (req, res, next) {
 });
-// _router.get
-exports.post_router = _router;
+exports.post = _router;

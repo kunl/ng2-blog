@@ -4,7 +4,6 @@ import * as express from 'express';
 
 export default (req: express.Request, res:express.Response, next:express.NextFunction) => {
     let title = req.params.title;
-    console.log(req.params)
     // Post.getPostByTitle(title).then((post) =>{
     //     if(post){
     //         post.createDate = dateformat(post.createDate, 'yyyy年mm月dd日');

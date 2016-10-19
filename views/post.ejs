@@ -4,7 +4,19 @@
 
 <%= title %>
 
-<form method="post">
+<ul>
+    <% list.forEach( post => {%>
+        <li>
+            <h3><%= post.title %></h3>
+            <p><%= post.content %></p>
+            <p>创建于:<%= post.createdAt %></p>
+        </li>
+    <% }) %>
+</ul>
+
+
+
+<form method="post" action="/post">
     <input type="text" name="title">
     <br>
     <textarea name="content" id="" cols="30" rows="10"></textarea>

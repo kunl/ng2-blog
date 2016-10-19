@@ -1,8 +1,9 @@
 "use strict";
 var mongoose_1 = require('mongoose');
 var mongoose = new mongoose_1.Mongoose();
-var uri = 'mongodb://localhost/blog';
-mongoose.connect(uri, function (err) {
+mongoose.Promise = global.Promise;
+exports.uri = 'mongodb://localhost/blog';
+mongoose.connect(exports.uri, function (err) {
     if (err) {
         console.log(err);
         console.log(err.message);
