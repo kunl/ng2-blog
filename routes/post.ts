@@ -9,9 +9,10 @@ let _router = Router();
 _router.get('/list', (req, res, next) => {
 
     console.log('### 查询 users ###')
-    Post.find().exec().then(user => {
-        console.log(user);
-        res.render('post', {title: '列表', list: user})
+
+    Post.find().exec().then(post => {
+        console.log(post);
+        res.render('post', {title: '列表', list: post})
     }, err => {
         console.log(err)
         res.status(500)
@@ -20,7 +21,7 @@ _router.get('/list', (req, res, next) => {
 });
 
 
-_router.get('/post', (req, res, next) => {
+_router.get('/post/:title', (req, res, next) => {
     res.render('post', {title: 'post list aaaaaa'})
 });
 
@@ -33,7 +34,7 @@ _router.post('/post', (req, res, next) => {
 
     Post.create(req.body).then(post => {
         console.log(post);
-        res.redirect('list')
+        res.redirect('/')
     }, err => {
         console.log(err)
         res.status(500)

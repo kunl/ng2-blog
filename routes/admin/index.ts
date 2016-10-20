@@ -1,40 +1,27 @@
 import { Router } from 'express';
-import postList from './post_list';
-import Post from '../../models/post';
+let _router = Router();
 
-let router = Router();
+import {post}  from '../../controller';
 
-router.get('/', (req, res) => {
-    let user = req.session['user'];
+/* GET admin page. */
+_router.get('/admin', (req, res) => {
+    // let user = req.session['user'];
 
-    if(user && user.user){
-        res.render('admin', {
+        res.render('admin/index', {
             title: '后台',
-            nickname: user.nickName
+            nickname: 'user.nickName'
         });
-    }else{
-        res.redirect('/login');
-    }
+
+    // if(user && user.user){
+    //     res.render('admin', {
+    //         title: '后台',
+    //         nickname: user.nickName
+    //     });
+    // }else{
+    //     res.redirect('/login');
+    // }
     
 });
 
-
-router.post('/post', (req, res) =>{
-    
-    if(req.body.title && req.body.content) {
-        let post = new Post(req.body);
-
-        // post.save().then((result) => {
-        //     console.log(result, '结果')
-        //         res.status(200).redirect('/admin');
-        //     if(!result.message){
-        //     }
-        // });
-    }
-    console.log(req.body)
-
-});
-
-
-export default router;
+export let admin = _router;
 

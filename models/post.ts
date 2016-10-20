@@ -1,7 +1,5 @@
-// import pool from './db';
-import * as dateformat from 'dateformat';
 import * as mongoose from 'mongoose';
-import { Schema, Types, Document } from 'mongoose';
+import { Schema, Types, Document, Model } from 'mongoose';
 
 import db from '../db';
 
@@ -25,6 +23,9 @@ let _schema = new Schema({
     type: String,
     required: true
   },
+  author: {
+    type: String
+  },
   createdAt: {
     type: Date,
     required: false
@@ -40,32 +41,8 @@ let _schema = new Schema({
   next();
 });
 
+export interface PostModel extends Model<IPost>{
+
+}
+
 export let Post = db.model<IPost>('posts', _schema);
-
-// export class HeroModel {
-
-//   private _heroModel: IPost;
-
-//   static findHero(name: string): Promise<IPost> {
-//     let p = new Promise((resolve, reject) => {
-//       let repo = new HeroRepository();
-
-//       repo.find({ name: name }).sort({ createdAt: -1 }).limit(1).exec((err, res) => {
-//         if (err) {
-//           reject(err);
-//         }
-//         else {
-//           if (res.length) {
-//             resolve(res[0]);
-//           }
-//           else {
-//             resolve(null);
-//           }
-//         }
-//       });
-//     });
-
-//     return p;
-//   }
-
-// }

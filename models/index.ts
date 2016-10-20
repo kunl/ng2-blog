@@ -1,2 +1,2 @@
 export { User, IUser } from './user';
-export { Post, IPost } from './post';
+export { Post, IPost, PostModel } from './post';

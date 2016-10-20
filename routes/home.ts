@@ -1,14 +1,26 @@
-import * as express from 'express';
-
+import * as marked from 'marked';
 import { Router } from 'express';
-let router = Router();
+let _router = Router();
+
+import { post }  from '../controller';
+
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-    res.render('home', { title: 'Express', post: [
-        {title: 4},
-        {title: 2}
-    ] });
+_router.get('/index', (req, res, next) => {
+    res.redirect('/')
 });
 
-export let home = router;
+_router.get('/', function (req, res, next) {
+
+    post.find().then(list => {
+        console.log(`渲染列表 共 ${list.length}条`);
+        res.render('index', { title: '列表', list: list })
+    }, err => {
+        console.log(err)
+        res.status(500)
+    });
+
+});
+
+
+export let home = _router;

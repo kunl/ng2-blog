@@ -1,26 +1,36 @@
 <%- include('../common/head') -%>
 
+</head>
+<body>
 
-<%= title %>
-<%- nickname %>
+  <div id="wrap">
 
-<nav>
-    <ul>
-        <li><a href="/">首页</a></li>
-        <li><a href="admin/new">新建</a></li>
-        <!-- <li><a href="/drafts">草稿</a></li> -->
-        <li><a href="admin/list">列表</a></li>
-    </ul>
-</nav>
-<section>
-    <div class="content-input">
-    <form action="admin/post" method="post">
-        <input type="text" name="title"> <br>
-        <textarea name="content" id="" cols="30" rows="10"></textarea>
-        <input type="hidden" name="author" value="忆年">
-        <button>提交</button>
-    </form>
-        
+    <%# 侧边菜单 %>
+    <%- include('../common/sidebar') %>
+
+    <div class="outer">
+      <section id="main">
+
+        <%= title %>
+        <%- nickname %>
+
+        <div class="content-input">
+            <form action="post" method="post">
+                <input type="text" name="title"> <br>
+                <textarea name="content" id="" cols="30" rows="10"></textarea>
+                <input type="hidden" name="author" value="忆年">
+                <button>提交</button>
+            </form>
+        </div>
+      </section>
     </div>
-</section>
-<%- include('../common/footer') -%>
+
+     <%- include('../common/footer') %>
+    
+  </div>
+
+</body>
+
+</html>
+
+

@@ -12,6 +12,9 @@ var _schema = new mongoose_1.Schema({
         type: String,
         required: true
     },
+    author: {
+        type: String
+    },
     createdAt: {
         type: Date,
         required: false
@@ -27,25 +30,3 @@ var _schema = new mongoose_1.Schema({
     next();
 });
 exports.Post = db_1["default"].model('posts', _schema);
-// export class HeroModel {
-//   private _heroModel: IPost;
-//   static findHero(name: string): Promise<IPost> {
-//     let p = new Promise((resolve, reject) => {
-//       let repo = new HeroRepository();
-//       repo.find({ name: name }).sort({ createdAt: -1 }).limit(1).exec((err, res) => {
-//         if (err) {
-//           reject(err);
-//         }
-//         else {
-//           if (res.length) {
-//             resolve(res[0]);
-//           }
-//           else {
-//             resolve(null);
-//           }
-//         }
-//       });
-//     });
-//     return p;
-//   }
-// }
