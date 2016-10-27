@@ -4,7 +4,7 @@ var _router = express_1.Router();
 /* GET admin page. */
 _router.get('/admin', function (req, res) {
     // let user = req.session['user'];
-    res.render('admin/index', {
+    res.render('admin/ngadmin', {
         title: '后台',
         nickname: 'user.nickName'
     });
