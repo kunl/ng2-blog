@@ -7,7 +7,7 @@ import {post}  from '../../controller';
 _router.get('/admin', (req, res) => {
     // let user = req.session['user'];
 
-        res.render('admin/ngadmin', {
+        res.render('admin/index', {
             title: '后台',
             nickname: 'user.nickName'
         });
