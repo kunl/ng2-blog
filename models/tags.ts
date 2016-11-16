@@ -8,18 +8,7 @@ export default class {
     }
 
     save(){
-        console.log('新建tag', this.tagName);
-        return new Promise((resolve, reject) => {
-            // pool.getConnection((err, connection) =>{
-            //     connection.query('INSERT INTO tags SET ?', tag, (err, result) => {
-            //         if(err){
-            //             reject(err);
-            //         }
-            //         resolve(result);
-            //         connection.release();
-            //     });
-            // })
-        });
+
     }
 
     static getPostByTag(tag) {
@@ -35,7 +24,7 @@ export default class {
             WHERE tagname = '${tag}'
             LIMIT 0,6
         `;
-        console.log('tag', tag)
+
         return new Promise( (resolve, reject) => {
             pool.getConnection((err, connection) => {
                 connection.query(contentTags, (err, result) => {
