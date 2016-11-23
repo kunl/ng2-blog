@@ -1,17 +1,12 @@
 import * as mongoose from 'mongoose';
-import { Schema, Types, Document, Model } from 'mongoose';
-
-import db from '../db';
+import { Schema, Document, Model } from 'mongoose';
 
 export let ObjectId = mongoose.Schema.Types.ObjectId;
 
 export interface IPost extends Document {
-  name: string;
-  power: string;
-  amountPeopleSaved: number;
+  title: string;
   content: string;
-  createdAt: Date;
-  modifiedAt: Date;
+  tags: string[]
 }
 
 let _schema = new Schema({
@@ -26,6 +21,12 @@ let _schema = new Schema({
   author: {
     type: String
   },
+  tags: [
+    {
+      type: ObjectId,
+      ref: 'tags'
+    }
+  ],
   createdAt: {
     type: Date,
     required: false
@@ -45,4 +46,4 @@ export interface PostModel extends Model<IPost>{
 
 }
 
-export let Post = db.model<IPost>('posts', _schema);
+export let Post = mongoose.model<IPost>('posts', _schema);

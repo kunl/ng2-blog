@@ -1,70 +1,26 @@
-import * as dateformat from 'dateformat';
+import * as mongoose from 'mongoose';
+import { Schema, Model, Document } from 'mongoose';
 
-export default class {
-    tagName: string;
-
-    constructor(tag:{tagName: string}){
-        this.tagName = tag.tagName;
-    }
-
-    save(){
-
-    }
-
-    static getPostByTag(tag) {
-
-        let contentTags =`
-            SELECT GROUP_CONCAT(distinct tagname) AS tags,title, content, createDate ,author, posts.id
-            FROM tags
-            LEFT JOIN posttag
-            ON tags.tagid = posttag.tagid
-            RIGHT JOIN posts
-            ON posttag.postid = posts.id
-            GROUP BY posts.id
-            WHERE tagname = '${tag}'
-            LIMIT 0,6
-        `;
-
-        return new Promise( (resolve, reject) => {
-            pool.getConnection((err, connection) => {
-                connection.query(contentTags, (err, result) => {
-                    if(err){
-                        reject(err);
-                    }
-                    console.log(result)
-
-                    resolve(result.map((post) => {
-                        post.createDate = dateformat(post.createDate, 'yyyy年mm月dd日 HH:MM:ss');
-                        post.tags = post.tags ? post.tags.split(',') : [];
-                        return post;
-                    }));
-                    connection.release();
-                });
-            })
-            
-        });
-    }
-
-    static getTags() {
-        let sql = `
-            SELECT tagName,tags.tagId
-            FROM tags
-            left JOIN postTag
-            ON tags.tagId = postTag.tagId
-            GROUP BY tags.tagId
-        `;
-        return new Promise( (resolve, reject) => {
-            pool.getConnection((err, connection) => {
-                connection.query(sql, (err, result) =>{
-                if(err){
-                        reject(err);
-                    }
-                    resolve(result);
-                    connection.release();
-                });
-            });
-        });
-    }
-
-    
+interface ITags extends Document {
 }
+
+let _schema = new Schema({
+    tagName: {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date
+    }
+}).pre('save', (next) => {
+    console.log('创建 tags');
+
+    let now = new Date();
+    this.createdAt = this.createdAt || now;
+    next();
+
+}).post('save', () => {
+    console.log('保存成功了');
+});
+
+export let Tag = mongoose.model<ITags>('tags', _schema);

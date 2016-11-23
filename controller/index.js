@@ -8,7 +8,12 @@ var PostController = (function () {
     PostController.prototype.find = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this._post.find().sort({ createdAt: -1 }).limit(10).exec(function (err, res) {
+            _this._post
+                .find()
+                .populate('tags')
+                .sort({ createdAt: -1 })
+                .limit(10)
+                .exec(function (err, res) {
                 console.log('查找列表 成功 ！！！');
                 if (err) {
                     reject(err);
@@ -28,6 +33,14 @@ var PostController = (function () {
         });
     };
     PostController.prototype.new = function (post) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this._post.create(post).then(function (p) {
+                resolve(p);
+            }, function (err) {
+                reject(err);
+            });
+        });
     };
     return PostController;
 }());

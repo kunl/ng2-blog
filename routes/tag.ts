@@ -1,10 +1,10 @@
-import Tag from '../models/tags';
-import * as express from 'express';
+import { Tag } from '../models'
+import { Router } from 'express';
 
-export default (req: express.Request, res:express.Response, next:express.NextFunction) => {
-    let tag = req.params.tagName;
+let _router = Router();
 
-    Tag.getPostByTag(tag).then((posts: any) => {
-        console.log(posts);
-    })
-};
+_router.get('/tags', (req, res, next) => {
+    Tag.find({}).exec().then(tags => res.json(tags), err => console.log(err))
+});
+
+export let tag =  _router;

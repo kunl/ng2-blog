@@ -1,7 +1,6 @@
 "use strict";
 var mongoose = require('mongoose');
 var mongoose_1 = require('mongoose');
-var db_1 = require('../db');
 exports.ObjectId = mongoose.Schema.Types.ObjectId;
 var _schema = new mongoose_1.Schema({
     title: {
@@ -15,6 +14,12 @@ var _schema = new mongoose_1.Schema({
     author: {
         type: String
     },
+    tags: [
+        {
+            type: exports.ObjectId,
+            ref: 'tags'
+        }
+    ],
     createdAt: {
         type: Date,
         required: false
@@ -29,4 +34,4 @@ var _schema = new mongoose_1.Schema({
     this.modifiedAt = now;
     next();
 });
-exports.Post = db_1["default"].model('posts', _schema);
+exports.Post = mongoose.model('posts', _schema);

@@ -11,28 +11,41 @@ class PostController {
     find() {
 
         return new Promise <IPost[]>((resolve, reject) => {
-            this._post.find().sort({ createdAt: -1 }).limit(10).exec((err, res) => {
-                console.log('查找列表 成功 ！！！')
-                if (err) {
-                    reject(err);
-                }
-                else {
-                    if (res.length) {
-                        res.forEach((post) => {
-                            post.content = marked(post.content)
-                        });
-                        resolve(res);
+            this._post
+                .find()
+                .populate('tags')
+                .sort({ createdAt: -1 })
+                .limit(10)
+                .exec((err, res) => {
+                    console.log('查找列表 成功 ！！！');
+                    if (err) {
+                        reject(err);
                     }
                     else {
-                        resolve(null);
+                        if (res.length) {
+                            res.forEach((post) => {
+                                post.content = marked(post.content)
+                            });
+                            resolve(res);
+                        }
+                        else {
+                            resolve(null);
+                        }
                     }
-                }
             });
         });
     }
-    new(post: IPost) {
 
+    new(post: any) {
+        return new Promise <IPost[]>((resolve, reject) => {
+            this._post.create(post).then((p :any) => {
+                resolve(p)
+            }, err => {
+                reject(err);
+            })
+        });
     }
+
 }
 
-export let post = new PostController()
+export let post = new PostController();

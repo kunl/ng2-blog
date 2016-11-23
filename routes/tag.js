@@ -1,9 +1,8 @@
 "use strict";
-var tags_1 = require('../models/tags');
-exports.__esModule = true;
-exports["default"] = function (req, res, next) {
-    var tag = req.params.tagName;
-    tags_1["default"].getPostByTag(tag).then(function (posts) {
-        console.log(posts);
-    });
-};
+var models_1 = require('../models');
+var express_1 = require('express');
+var _router = express_1.Router();
+_router.get('/tags', function (req, res, next) {
+    models_1.Tag.find({}).exec().then(function (tags) { return res.json(tags); }, function (err) { return console.log(err); });
+});
+exports.tag = _router;
