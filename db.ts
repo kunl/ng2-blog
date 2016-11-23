@@ -1,8 +1,4 @@
-import { Mongoose } from 'mongoose';
-
-
-let mongoose = new Mongoose();
-mongoose.Promise = global.Promise;
+import * as mongoose from 'mongoose';
 
 export const uri = 'mongodb://localhost/blog';
 
