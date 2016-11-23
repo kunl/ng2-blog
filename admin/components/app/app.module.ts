@@ -5,18 +5,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule  } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-// import { AppRoutingModule } from './.routing'; //TODO: Create .routing
+import { NavComponent } from '../nav/nav.component'
+import { FooterComponent } from '../footer/footer.component'
+import { PostComponent } from '../post/post.component'
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
-
+        FormsModule
         // AppRoutingModule,
     ],
-    declarations: [AppComponent],
+    declarations: [
+        AppComponent,
+        NavComponent,
+        FooterComponent,
+        PostComponent
+    ],
     providers: [/* TODO: Providers go here */],
     bootstrap: [AppComponent],
 })

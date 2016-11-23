@@ -2,15 +2,14 @@
  * Created by kunl on 2016/11/2-0002.
  */
 
-
 import { Component, OnInit } from '@angular/core';
 
+import tpl from './nav.tpl'
 @Component({
-    moduleId: module.id,
-    selector: 'app',
-    templateUrl: 'app.component.html'
+    selector: 'Nav',
+    template: tpl
 })
-export class AppComponent implements OnInit {
+export class NavComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }

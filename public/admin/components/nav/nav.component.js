@@ -12,18 +12,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
+var nav_tpl_1 = require("./nav.tpl");
+var NavComponent = (function () {
+    function NavComponent() {
     }
-    AppComponent.prototype.ngOnInit = function () { };
-    return AppComponent;
+    NavComponent.prototype.ngOnInit = function () { };
+    return NavComponent;
 }());
-AppComponent = __decorate([
+NavComponent = __decorate([
     core_1.Component({
-        moduleId: module.id,
-        selector: 'app',
-        templateUrl: 'app.component.html'
+        selector: 'Nav',
+        template: nav_tpl_1.default
     }),
     __metadata("design:paramtypes", [])
-], AppComponent);
-exports.AppComponent = AppComponent;
+], NavComponent);
+exports.NavComponent = NavComponent;

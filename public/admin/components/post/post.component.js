@@ -1,6 +1,3 @@
-/**
- * Created by kunl on 2016/11/2-0002.
- */
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -12,25 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser");
-var http_1 = require("@angular/http");
-var app_component_1 = require("./app.component");
-// import { AppRoutingModule } from './.routing'; //TODO: Create .routing
-var AppModule = (function () {
-    function AppModule() {
+var post_tpl_1 = require("./post.tpl");
+var PostComponent = (function () {
+    function PostComponent() {
     }
-    return AppModule;
+    PostComponent.prototype.submit = function () {
+        console.log(this);
+    };
+    return PostComponent;
 }());
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            platform_browser_1.BrowserModule,
-            http_1.HttpModule,
-        ],
-        declarations: [app_component_1.AppComponent],
-        providers: [],
-        bootstrap: [app_component_1.AppComponent],
+PostComponent = __decorate([
+    core_1.Component({
+        selector: 'Post',
+        template: post_tpl_1.default
     }),
     __metadata("design:paramtypes", [])
-], AppModule);
-exports.AppModule = AppModule;
+], PostComponent);
+exports.PostComponent = PostComponent;
