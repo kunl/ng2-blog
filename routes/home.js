@@ -1,7 +1,7 @@
 "use strict";
-var express_1 = require('express');
+var express_1 = require("express");
 var _router = express_1.Router();
-var controller_1 = require('../controller');
+var controller_1 = require("../controller");
 /* GET home page. */
 _router.get('/index', function (req, res, next) {
     res.redirect('/');

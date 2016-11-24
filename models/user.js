@@ -1,7 +1,7 @@
 "use strict";
 var _this = this;
-var mongoose_1 = require('mongoose');
-var mongoose = require('mongoose');
+var mongoose_1 = require("mongoose");
+var mongoose = require("mongoose");
 var _schema = new mongoose_1.Schema({
     id: String,
     created: Date,

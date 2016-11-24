@@ -1,6 +1,6 @@
 "use strict";
-var mongoose = require('mongoose');
-var mongoose_1 = require('mongoose');
+var mongoose = require("mongoose");
+var mongoose_1 = require("mongoose");
 exports.ObjectId = mongoose.Schema.Types.ObjectId;
 var _schema = new mongoose_1.Schema({
     title: {
