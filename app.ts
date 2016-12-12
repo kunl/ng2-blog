@@ -27,6 +27,10 @@ app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
 
 app.use(router);
 
+app.use('*', (req, res) => {
+  res.sendFile('public/index.html')
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err:Error = new Error('Not Found');

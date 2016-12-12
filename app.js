@@ -19,6 +19,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
 app.use(routes_1["default"]);
+app.use('*', function (req, res) {
+    res.sendFile('public/index.html');
+});
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');

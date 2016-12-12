@@ -29,6 +29,11 @@ let tpl = `
 <Post></Post>
 
 
+<my-lock>
+  <ng-content></ng-content>
+  <i class="lock"></i>
+</my-lock>
+
   </div>
  </div>
 </div>
