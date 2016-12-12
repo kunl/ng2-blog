@@ -1,6 +1,6 @@
 "use strict";
-var marked = require('marked');
-var models_1 = require('../models');
+var marked = require("marked");
+var models_1 = require("../models");
 var PostController = (function () {
     function PostController() {
         this._post = models_1.Post;

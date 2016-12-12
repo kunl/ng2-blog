@@ -1,7 +1,7 @@
 "use strict";
-var express_1 = require('express');
+var express_1 = require("express");
 var router = express_1.Router();
-var models_1 = require('../models');
+var models_1 = require("../models");
 /* GET users listing. */
 router.get('/user', function (req, res, next) {
     // User.create(<IUser>{

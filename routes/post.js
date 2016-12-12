@@ -1,6 +1,6 @@
 "use strict";
-var express_1 = require('express');
-var models_1 = require('../models');
+var express_1 = require("express");
+var models_1 = require("../models");
 var _router = express_1.Router();
 /* GET users listing. */
 _router.get('/list', function (req, res, next) {

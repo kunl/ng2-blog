@@ -11,16 +11,17 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "cookie-parser": "~1.4.3",
-    "debug": "~2.2.0",
+    "debug": "~2.3.3",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
     "highlight.js": "^9.7.0",
     "marked": "^0.3.6",
-    "mongoose": "^4.6.4",
+    "mongoose": "^4.7.0",
     "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.0",
+    "serve-favicon": "~2.3.2",
     "stylus": "^0.54.5",
+<<<<<<< HEAD
     "@angular/common": "^2.1.1",
     "@angular/compiler": "^2.1.1",
     "@angular/core": "^2.1.1",
@@ -29,11 +30,22 @@
     "@angular/platform-browser": "^2.1.1",
     "@angular/platform-browser-dynamic": "^2.1.1",
     "@angular/router": "^3.1.1",
+=======
+
+    "@angular/common": "^2.2.3",
+    "@angular/compiler": "^2.2.3",
+    "@angular/core": "^2.2.3",
+    "@angular/forms": "^2.2.3",
+    "@angular/http": "^2.2.3",
+    "@angular/platform-browser": "^2.2.3",
+    "@angular/platform-browser-dynamic": "^2.2.3",
+    "@angular/router": "^3.2.3",
+>>>>>>> a0ccf01fc248c73bda51876166caf62c21073188
     "core-js": "^2.4.1",
     "reflect-metadata": "^0.1.8",
-    "rxjs": "5.0.0-rc.1",
+    "rxjs": "5.0.0-rc.4",
     "systemjs": "^0.19.40",
-    "zone.js": "^0.6.26"
+    "zone.js": "^0.7.2"
   },
   "devDependencies": {
     "@types/body-parser": "0.0.33",

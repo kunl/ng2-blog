@@ -1,5 +1,5 @@
 "use strict";
-var express_1 = require('express');
+var express_1 = require("express");
 var _router = express_1.Router();
 /* GET admin page. */
 _router.get('/admin', function (req, res) {
