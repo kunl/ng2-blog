@@ -1,5 +1,5 @@
-import Post from '../models/post';
-import * as dateformat from 'dateformat';
+import {Post} from '../models/post';
+// import * as dateformat from 'dateformat';
 import * as express from 'express';
 
 export default (req: express.Request, res:express.Response, next:express.NextFunction) => {

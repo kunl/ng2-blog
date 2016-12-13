@@ -1,22 +1,28 @@
 let path = require('path');
 let webpack = require('webpack');
+const { CheckerPlugin } = require('awesome-typescript-loader')
+var TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 
 
+let __client_path = 'client';
 let webpackConfig = {
     entry: {
-        polyfills: path.resolve(__dirname, 'admin/polyfills.ts'),
-        vendor: path.resolve(__dirname, 'admin/vendor.ts'),
-        app: path.resolve(__dirname, 'admin/main')
+        polyfills: path.resolve(__dirname, __client_path, 'polyfills'),
+        vendor: path.resolve(__dirname, __client_path, 'vendor'),
+        admin: path.resolve(__dirname, __client_path, 'admin', 'main'),
+        blog: path.resolve(__dirname, __client_path, 'blog', 'main'),
     },
     output: {
         publicPath: 'static/',
         path: path.resolve(__dirname, 'public/static'),
-        filename: '[name].js',
-        sourceMapFilename: '[name].map',
-        chunkFilename: '[id].chunk.js'
+        filename: '[name].js'
     },
     plugins: [
         // new ExtractTextPlugin("./style.css"),
+        new CheckerPlugin(),
+        new TsConfigPathsPlugin({
+            configFileName: 'admin/tsconfig.json'
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: ['app', 'vendor', 'polyfills']
         })
@@ -31,8 +37,8 @@ let webpackConfig = {
             test: /\.ts$/,
             loaders: [
                 'awesome-typescript-loader',
-                'angular2-router-loader',
-                'angular2-template-loader'
+                'angular2-template-loader',
+                'angular2-router-loader'
             ]
         }, {
             test: /\.css$/,
@@ -44,7 +50,7 @@ let webpackConfig = {
             loader: 'raw-loader'
         }]
     },
-
+    devtool: 'source-map',
     node: {
         global: true,
         crypto: 'empty',

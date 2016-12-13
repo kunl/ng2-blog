@@ -7,7 +7,8 @@ import * as logger from 'morgan';
 import * as cookieParser from  'cookie-parser';
 import { json, urlencoded } from 'body-parser';
 
-import './db';
+
+// import './db';
 
 import  router  from './routes';
 
@@ -21,14 +22,20 @@ app.use(logger('dev'));
 app.use(json());
 app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(require('stylus').middleware(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
 
-app.use(router);
+app.use(express.static(path.join(__dirname, 'public')));
+// app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
+
+// app.use(router);
+
+
+app.use('admin', (req, res) => {
+  res.sendFile('public/admin.html')
+})
+
 
 app.use('*', (req, res) => {
-  res.sendFile('public/index.html')
+  res.sendFile('public/blog.html')
 })
 
 // catch 404 and forward to error handler
