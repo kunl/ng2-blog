@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'Post',
-    templateUrl: 'post.component.html'
+    selector: 'List',
+    templateUrl: 'list.component.html'
 })
-export  class PostComponent {
+export  class ListComponent {
     title: string;
     content: string;
 

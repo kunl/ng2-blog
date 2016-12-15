@@ -9,3 +9,5 @@ declare class Post {
     updateDate?: Date
 
 }
+
+export declare let webpackDevMiddleware: any;

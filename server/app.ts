@@ -2,13 +2,17 @@
 
 import * as express from 'express';
 import * as path from 'path';
-import * as cookieParser from  'cookie-parser';
+import * as cookieParser from 'cookie-parser';
 import { json, urlencoded } from 'body-parser';
 
+import * as webpackDevMiddleware  from 'webpack-dev-middleware';
+import * as webpack from 'webpack';
 
+// 路径为 dist/server/app
+let config = require('../../webpack.config');
 // import './db';
 
-import  router  from './routes';
+import router from './routes';
 
 let __root_path = 'server';
 
@@ -29,21 +33,19 @@ app.use(express.static(path.join('public')));
 
 
 app.use('/admin', (req, res) => {
-  // res.send('afaffs');
-
-    res.render('admin', {title: '咧白哦发噶似的', list: []})
+    res.render('admin', { title: '咧白哦发噶似的' })
 })
 
 
-app.use('/', (req, res) => {
-  res.sendFile('public/blog.html')
-})
+// app.use('*', (req, res) => {
+//     res.render('index', { title: '咧白哦发噶似的', list: [] })
+// })
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err:Error = new Error('Not Found');
-  err['status'] = 404;
-  next(err);
+app.use(function (req, res, next) {
+    var err: Error = new Error('Not Found');
+    err['status'] = 404;
+    next(err);
 });
 
 // error handlers
@@ -53,7 +55,7 @@ app.use(function(req, res, next) {
 
 
 if (app.get('env') === 'development') {
-    app.use(<express.ErrorRequestHandler> function(err, req, res, next) {
+    app.use(<express.ErrorRequestHandler>function (err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -64,12 +66,12 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(<express.ErrorRequestHandler> function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+app.use(<express.ErrorRequestHandler>function (err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
 });
 
 

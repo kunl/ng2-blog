@@ -1,7 +1,6 @@
 let path = require('path');
 let webpack = require('webpack');
-const { CheckerPlugin } = require('awesome-typescript-loader')
-var TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
+
 
 
 let __client_path = 'client';
@@ -13,16 +12,12 @@ let webpackConfig = {
         blog: path.resolve(__dirname, __client_path, 'blog', 'main'),
     },
     output: {
-        publicPath: 'static/',
+        publicPath: '../static/',
         path: path.resolve(__dirname, 'public/static'),
         filename: '[name].js'
     },
     plugins: [
-        // new ExtractTextPlugin("./style.css"),
-        new CheckerPlugin(),
-        new TsConfigPathsPlugin({
-            configFileName: 'admin/tsconfig.json'
-        }),
+
         new webpack.optimize.CommonsChunkPlugin({
             name: ['app', 'vendor', 'polyfills']
         })
@@ -50,17 +45,17 @@ let webpackConfig = {
             loader: 'raw-loader'
         }]
     },
-    devtool: 'source-map',
+
     node: {
         global: true,
         crypto: 'empty',
         __dirname: true,
         __filename: true,
+        process: true,
         Buffer: false,
         clearImmediate: false,
         setImmediate: false
     }
-
 };
 
 

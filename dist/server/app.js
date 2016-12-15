@@ -4,6 +4,8 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const body_parser_1 = require("body-parser");
+// 路径为 dist/server/app
+let config = require('../../webpack.config');
 let __root_path = 'server';
 let app = express();
 // view engine setup
@@ -15,12 +17,11 @@ app.use(cookieParser());
 app.use(express.static(path.join('public')));
 // app.use(router);
 app.use('/admin', (req, res) => {
-    // res.send('afaffs');
-    res.render('admin', { title: '咧白哦发噶似的', list: [] });
+    res.render('admin', { title: '咧白哦发噶似的' });
 });
-app.use('/', (req, res) => {
-    res.sendFile('public/blog.html');
-});
+// app.use('*', (req, res) => {
+//     res.render('index', { title: '咧白哦发噶似的', list: [] })
+// })
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');

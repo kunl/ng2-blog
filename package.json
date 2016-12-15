@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "concurrently \"npm run tsc:w\" \"npm run nodemon\"",
+    "dev": "concurrently \"npm run tsc:w\" \"npm run webpack\" \"npm run nodemon\" ",
     "nodemon": "nodemon",
     "webpack": "./node_modules/.bin/webpack --config webpack.config.js --color --progress -w",
     "tsc:w": "tsc -w -p server"
