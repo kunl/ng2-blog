@@ -1,6 +1,6 @@
 "use strict";
-const express_1 = require("express");
-const models_1 = require("../models");
+const express_1 = require('express');
+const models_1 = require('../models');
 let _router = express_1.Router();
 /* GET users listing. */
 _router.get('/list', (req, res, next) => {

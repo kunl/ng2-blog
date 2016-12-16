@@ -1,5 +1,5 @@
 "use strict";
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 exports.uri = 'mongodb://localhost/blog';
 mongoose.connect(exports.uri, (err) => {
     if (err) {

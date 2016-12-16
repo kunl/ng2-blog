@@ -11,12 +11,12 @@ import { admin } from './admin';
 
 let router = Router();
 
-router.use(home);
+// router.use(home);
 router.use(user);
 router.use(post);
 router.use(tag);
 
-router.use(admin);
+// router.use(admin);
 
 // router.get('/:title', postDetail);
 // router.get('/tag/:tagName', tag)

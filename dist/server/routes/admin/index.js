@@ -1,5 +1,5 @@
 "use strict";
-const express_1 = require("express");
+const express_1 = require('express');
 let _router = express_1.Router();
 /* GET admin page. */
 _router.get('/admin', (req, res) => {

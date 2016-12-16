@@ -1,11 +1,12 @@
-/// <reference path="../typings.d.ts" />
 "use strict";
-const express = require("express");
-const path = require("path");
-const cookieParser = require("cookie-parser");
-const body_parser_1 = require("body-parser");
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const body_parser_1 = require('body-parser');
 // 路径为 dist/server/app
 let config = require('../../webpack.config');
+// import './db';
+const routes_1 = require('./routes');
 let __root_path = 'server';
 let app = express();
 // view engine setup
@@ -15,9 +16,12 @@ app.use(body_parser_1.json());
 app.use(body_parser_1.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join('public')));
-// app.use(router);
+app.use(routes_1.default);
 app.use('/admin', (req, res) => {
     res.render('admin', { title: '咧白哦发噶似的' });
+});
+app.use('/', (req, res) => {
+    res.render('blog', { title: '咧白哦发噶似的' });
 });
 // app.use('*', (req, res) => {
 //     res.render('index', { title: '咧白哦发噶似的', list: [] })

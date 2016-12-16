@@ -1,6 +1,6 @@
 "use strict";
-const mongoose = require("mongoose");
-const mongoose_1 = require("mongoose");
+const mongoose = require('mongoose');
+const mongoose_1 = require('mongoose');
 exports.ObjectId = mongoose.Schema.Types.ObjectId;
 let _schema = new mongoose_1.Schema({
     title: {

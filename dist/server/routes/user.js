@@ -1,7 +1,7 @@
 "use strict";
-const express_1 = require("express");
+const express_1 = require('express');
 let router = express_1.Router();
-const models_1 = require("../models");
+const models_1 = require('../models');
 /* GET users listing. */
 router.get('/user', (req, res, next) => {
     // User.create(<IUser>{
