@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common'
 
 import { AppComponent, WelcomeComponent } from './app.component';
 import { NavComponent } from './nav/nav.component'
@@ -37,7 +38,9 @@ export const AppRouter: Routes = [
         NavComponent,
         FooterComponent
     ],
-    providers: [],
+    providers: [
+        {provide: APP_BASE_HREF, useValue: '/admin'}
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule { }

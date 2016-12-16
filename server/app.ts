@@ -1,11 +1,9 @@
-/// <reference path="../typings.d.ts" />
 
 import * as express from 'express';
 import * as path from 'path';
 import * as cookieParser from 'cookie-parser';
 import { json, urlencoded } from 'body-parser';
 
-import * as webpackDevMiddleware  from 'webpack-dev-middleware';
 import * as webpack from 'webpack';
 
 // 路径为 dist/server/app
@@ -29,11 +27,14 @@ app.use(cookieParser());
 app.use(express.static(path.join('public')));
 
 
-// app.use(router);
+app.use(router);
 
 
 app.use('/admin', (req, res) => {
     res.render('admin', { title: '咧白哦发噶似的' })
+})
+app.use('/', (req, res) => {
+    res.render('blog', { title: '咧白哦发噶似的' })
 })
 
 
