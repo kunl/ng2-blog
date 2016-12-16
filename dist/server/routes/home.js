@@ -1,7 +1,7 @@
 "use strict";
-const express_1 = require('express');
+const express_1 = require("express");
 let _router = express_1.Router();
-const controller_1 = require('../controller');
+const controller_1 = require("../controller");
 /* GET home page. */
 _router.get('/index', (req, res, next) => {
     res.redirect('/');

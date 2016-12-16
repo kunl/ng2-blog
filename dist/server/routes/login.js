@@ -1,5 +1,5 @@
 "use strict";
-const express_1 = require('express');
+const express_1 = require("express");
 // import User from '../models/user';
 let router = express_1.Router();
 router.get('/', (req, res) => {

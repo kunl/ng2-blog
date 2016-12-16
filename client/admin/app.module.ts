@@ -14,16 +14,10 @@ import { NavComponent } from './nav/nav.component'
 import { FooterComponent } from './footer/footer.component'
 
 
-
 export const AppRouter: Routes = [
-    {
-        path: '', component: WelcomeComponent, pathMatch: 'full'
-    },
-    {
-        path: 'post', loadChildren: './post/post.module#PostModule'
-    }
+    { path: '', component: WelcomeComponent, pathMatch: 'full' },
+    { path: 'post', loadChildren: './post/post.module#PostModule' }
 ]
-
 
 @NgModule({
     imports: [
@@ -39,7 +33,7 @@ export const AppRouter: Routes = [
         FooterComponent
     ],
     providers: [
-        {provide: APP_BASE_HREF, useValue: '/admin'}
+        { provide: APP_BASE_HREF, useValue: '/admin' }
     ],
     bootstrap: [AppComponent],
 })

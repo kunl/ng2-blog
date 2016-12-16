@@ -10,19 +10,12 @@ import { ListComponent } from './list/list.component'
 
 
 export const PostRouter: Routes = [
-
-    
-
     {
-        path: 'aa', component: PostComponent,
-        // children: [
-        //     { path: 'list', component: ListComponent}
-        // ]
-    },
-    {
-        path: '', component: ListComponent
+        path: '', component: PostComponent,
+        children: [
+            { path: 'list', component: ListComponent}
+        ]
     }
-
 ]
 
 

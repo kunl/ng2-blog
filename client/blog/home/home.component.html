@@ -1,0 +1,30 @@
+<article id="post-2016/ng2-attribute-directive" class="article article-type-post" *ngFor="let post of posts">
+
+    <div class="article-inner">
+        <header class="article-header">
+            <a class="article-date">
+                <time datetime="2016-05-08T10:37:38.000Z" itemprop="datePublished">
+                    {{ post.createdAt }}
+                </time>
+            </a>
+
+            <h1 itemprop="name">
+                <a class="article-title" href="/2016/ng2-attribute-directive/">
+                    {{ post.title }}
+                </a>
+            </h1>
+        </header>
+
+        <div class="article-entry" itemprop="articleBody">
+            {{ post.content }}
+        </div>
+
+        <footer class="article-footer">
+            <a href="http://kunl.in/2016/ng2-attribute-directive/#disqus_thread" class="article-comment-link">评论</a>
+            <ul class="article-tag-list">
+                <li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular2/">angular2</a></li>
+            </ul>
+        </footer>
+    </div>
+
+</article>

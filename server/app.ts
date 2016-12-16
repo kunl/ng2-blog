@@ -7,7 +7,6 @@ import { json, urlencoded } from 'body-parser';
 import * as webpack from 'webpack';
 
 // 路径为 dist/server/app
-let config = require('../../webpack.config');
 // import './db';
 
 import router from './routes';
@@ -33,14 +32,10 @@ app.use(router);
 app.use('/admin', (req, res) => {
     res.render('admin', { title: '咧白哦发噶似的' })
 })
-app.use('/', (req, res) => {
-    res.render('blog', { title: '咧白哦发噶似的' })
+app.use('/*', (req, res) => {
+    res.render('blog', { title: 'kunl' })
 })
 
-
-// app.use('*', (req, res) => {
-//     res.render('index', { title: '咧白哦发噶似的', list: [] })
-// })
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

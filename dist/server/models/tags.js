@@ -1,6 +1,6 @@
 "use strict";
-const mongoose = require('mongoose');
-const mongoose_1 = require('mongoose');
+const mongoose = require("mongoose");
+const mongoose_1 = require("mongoose");
 let _schema = new mongoose_1.Schema({
     tagName: {
         type: String,

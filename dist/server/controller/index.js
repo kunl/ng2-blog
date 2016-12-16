@@ -1,6 +1,6 @@
 "use strict";
-const marked = require('marked');
-const models_1 = require('../models');
+const marked = require("marked");
+const models_1 = require("../models");
 class PostController {
     constructor() {
         this._post = models_1.Post;
