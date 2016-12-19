@@ -7,7 +7,7 @@ import { json, urlencoded } from 'body-parser';
 import * as webpack from 'webpack';
 
 // 路径为 dist/server/app
-// import './db';
+import './db';
 
 import router from './routes';
 
@@ -26,11 +26,11 @@ app.use(cookieParser());
 app.use(express.static(path.join('public')));
 
 
-app.use(router);
+app.use('/api', router);
 
 
 app.use('/admin', (req, res) => {
-    res.render('admin', { title: '咧白哦发噶似的' })
+    res.render('admin', { title: 'kunl 管理' })
 })
 app.use('/*', (req, res) => {
     res.render('blog', { title: 'kunl' })
