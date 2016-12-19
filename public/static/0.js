@@ -6,12 +6,12 @@ webpackJsonp([0],{
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__post_service__ = __webpack_require__(697);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__post_component__ = __webpack_require__(699);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__list_list_component__ = __webpack_require__(698);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__post_service__ = __webpack_require__(699);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__post_component__ = __webpack_require__(701);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__list_list_component__ = __webpack_require__(700);
 /* harmony export (binding) */ __webpack_require__.d(exports, "PostRouter", function() { return PostRouter; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "PostModule", function() { return PostModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -63,11 +63,12 @@ PostModule = __decorate([
 
 /***/ },
 
-/***/ 697:
+/***/ 699:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(208);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return PostService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -79,29 +80,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var PostService = (function () {
-    function PostService() {
+    function PostService(_http) {
+        this._http = _http;
     }
     PostService.prototype.save = function (post) {
-        console.log(post);
+        this._http.post('/api/posts', JSON.stringify(post))
+            .map(function (res) { return console.log(res); }).subscribe();
     };
     return PostService;
 }());
 PostService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* Injectable */])(),
-    __metadata("design:paramtypes", [])
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
 ], PostService);
 
 
 
 /***/ },
 
-/***/ 698:
+/***/ 700:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__post_service__ = __webpack_require__(697);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__post_service__ = __webpack_require__(699);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return ListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -130,7 +134,7 @@ var ListComponent = (function () {
 ListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
         selector: 'List',
-        template: __webpack_require__(700)
+        template: __webpack_require__(705)
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__post_service__["a" /* PostService */]])
 ], ListComponent);
@@ -139,11 +143,12 @@ ListComponent = __decorate([
 
 /***/ },
 
-/***/ 699:
+/***/ 701:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__post_service__ = __webpack_require__(699);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return PostComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -155,34 +160,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var PostComponent = (function () {
-    function PostComponent() {
+    function PostComponent(_service) {
+        this._service = _service;
     }
     PostComponent.prototype.submit = function () {
-        console.log(this);
+        var post = {
+            title: this.title,
+            content: this.content
+        };
+        console.log(post);
+        this._service.save(post);
     };
     return PostComponent;
 }());
 PostComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
         selector: 'Post',
-        template: __webpack_require__(701)
+        template: __webpack_require__(706)
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__post_service__["a" /* PostService */]])
 ], PostComponent);
 
 
 
 /***/ },
 
-/***/ 700:
+/***/ 705:
 /***/ function(module, exports) {
 
 module.exports = "list"
 
 /***/ },
 
-/***/ 701:
+/***/ 706:
 /***/ function(module, exports) {
 
 module.exports = "<input [(ngModel)]=\"title\" #ctrl=\"ngModel\" required> <br>\r\n<textarea name=\"\" [(ngModel)]=\"content\" id=\"\" cols=\"30\" rows=\"10\"></textarea> <br>\r\n<button (click)=\"submit()\" >Set value</button>\r\n\r\n<button [routerLink]=\"['/post', 'list']\">list</button>\r\n<router-outlet></router-outlet>"

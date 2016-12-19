@@ -4,7 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const body_parser_1 = require("body-parser");
 // 路径为 dist/server/app
-// import './db';
+require("./db");
 const routes_1 = require("./routes");
 let __root_path = 'server';
 let app = express();
@@ -15,9 +15,9 @@ app.use(body_parser_1.json());
 app.use(body_parser_1.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join('public')));
-app.use(routes_1.default);
+app.use('/api', routes_1.default);
 app.use('/admin', (req, res) => {
-    res.render('admin', { title: '咧白哦发噶似的' });
+    res.render('admin', { title: 'kunl 管理' });
 });
 app.use('/*', (req, res) => {
     res.render('blog', { title: 'kunl' });

@@ -1,4 +1,4 @@
-webpackJsonp([3],{
+webpackJsonp([5],{
 
 /***/ 393:
 /***/ function(module, exports, __webpack_require__) {
@@ -6,9 +6,10 @@ webpackJsonp([3],{
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(529);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(529);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AppModule; });
 /**
  * Created by kunl on 2016/11/2-0002.
@@ -27,6 +28,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AppModule = (function () {
     function AppModule() {
     }
@@ -36,18 +38,19 @@ AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */].forRoot([
-                { path: '', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(6).then((function (require) { resolve(__webpack_require__(704)['HomeModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); }, pathMatch: 'full' },
-                { path: 'about', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(7).then((function (require) { resolve(__webpack_require__(702)['AboutModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+            __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* RouterModule */].forRoot([
+                { path: '', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(1).then((function (require) { resolve(__webpack_require__(698)['HomeModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); }, pathMatch: 'full' },
+                { path: 'about', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(2).then((function (require) { resolve(__webpack_require__(697)['AboutModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
             ])
         ],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]
+            __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]
         ],
         providers: [{
-                provide: __WEBPACK_IMPORTED_MODULE_3__angular_common__["a" /* APP_BASE_HREF */], useValue: '/'
+                provide: __WEBPACK_IMPORTED_MODULE_4__angular_common__["a" /* APP_BASE_HREF */], useValue: '/'
             }],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]],
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]],
     }),
     __metadata("design:paramtypes", [])
 ], AppModule);
