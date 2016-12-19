@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PostService } from './post.service';
 
 @Component({
     selector: 'Post',
@@ -8,7 +9,19 @@ export  class PostComponent {
     title: string;
     content: string;
 
+    constructor(private _service: PostService){
+
+    }
+
     submit(){
-        console.log(this)
+
+        let post = {
+            title: this.title,
+            content: this.content
+        };
+
+        console.log( post);
+
+        this._service.save(post)
     }
 }

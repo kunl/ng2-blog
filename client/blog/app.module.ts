@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 @NgModule({
     imports: [
         BrowserModule,
+        HttpModule,
         RouterModule.forRoot([
             { path: '', loadChildren: './home#HomeModule', pathMatch: 'full' },
             { path: 'about', loadChildren: './about#AboutModule' },
