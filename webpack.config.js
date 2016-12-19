@@ -19,7 +19,7 @@ let webpackConfig = {
     plugins: [
 
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'vendor', 'polyfills']
+            name: ['admin', 'blog', 'vendor', 'polyfills']
         })
 
     ],
