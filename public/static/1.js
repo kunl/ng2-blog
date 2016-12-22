@@ -1,10 +1,10 @@
 webpackJsonp([1],{
 
-/***/ 698:
+/***/ 701:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_module__ = __webpack_require__(704);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_module__ = __webpack_require__(708);
 Object.defineProperty(exports, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(exports, "HomeModule", function() { return __WEBPACK_IMPORTED_MODULE_0__home_module__["a"]; });
 
@@ -17,7 +17,45 @@ Object.defineProperty(exports, "__esModule", { value: true });
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_service__ = __webpack_require__(727);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(123);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return HomeService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var HomeService = (function () {
+    function HomeService(_http) {
+        this._http = _http;
+    }
+    HomeService.prototype.getPosts = function () {
+        return this._http.get('/api/posts')
+            .map(function (res) { return res.json(); })
+            .map(function (data) { return data.data; });
+    };
+    return HomeService;
+}());
+HomeService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+], HomeService);
+
+
+
+/***/ },
+
+/***/ 707:
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_service__ = __webpack_require__(703);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return HomeComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -49,7 +87,7 @@ var HomeComponent = (function () {
 HomeComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
         selector: 'Home',
-        template: __webpack_require__(707)
+        template: __webpack_require__(711)
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__home_service__["a" /* HomeService */]])
 ], HomeComponent);
@@ -58,16 +96,16 @@ HomeComponent = __decorate([
 
 /***/ },
 
-/***/ 704:
+/***/ 708:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(208);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__home_component__ = __webpack_require__(703);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__home_service__ = __webpack_require__(727);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__home_component__ = __webpack_require__(707);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__home_service__ = __webpack_require__(703);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return HomeModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -110,48 +148,10 @@ HomeModule = __decorate([
 
 /***/ },
 
-/***/ 707:
+/***/ 711:
 /***/ function(module, exports) {
 
 module.exports = "<article id=\"post-2016/ng2-attribute-directive\" class=\"article article-type-post\" *ngFor=\"let post of posts\">\r\n\r\n    <div class=\"article-inner\">\r\n        <header class=\"article-header\">\r\n            <a class=\"article-date\">\r\n                <time datetime=\"2016-05-08T10:37:38.000Z\" itemprop=\"datePublished\">\r\n                    {{ post.modifiedAt }}  {{ post.author }}\r\n                </time>\r\n\r\n            </a>\r\n\r\n            <h1 itemprop=\"name\">\r\n                <a class=\"article-title\" href=\"/2016/ng2-attribute-directive/\">\r\n                    {{ post.title }}\r\n                </a>\r\n            </h1>\r\n        </header>\r\n\r\n        <div class=\"article-entry\" itemprop=\"articleBody\">\r\n            {{ post.content }}\r\n        </div>\r\n\r\n        <footer class=\"article-footer\">\r\n            <a href=\"http://kunl.in/2016/ng2-attribute-directive/#disqus_thread\" class=\"article-comment-link\">评论</a>\r\n            <ul class=\"article-tag-list\">\r\n                <li class=\"article-tag-list-item\"><a class=\"article-tag-list-link\" href=\"/tags/angular2/\">angular2</a></li>\r\n            </ul>\r\n        </footer>\r\n    </div>\r\n\r\n</article>"
-
-/***/ },
-
-/***/ 727:
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(208);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return HomeService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var HomeService = (function () {
-    function HomeService(_http) {
-        this._http = _http;
-    }
-    HomeService.prototype.getPosts = function () {
-        return this._http.get('/api/posts')
-            .map(function (res) { return res.json(); })
-            .map(function (data) { return data.data; });
-    };
-    return HomeService;
-}());
-HomeService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
-], HomeService);
-
-
 
 /***/ }
 

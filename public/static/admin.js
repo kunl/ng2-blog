@@ -1,18 +1,18 @@
 webpackJsonp([4],{
 
-/***/ 392:
+/***/ 393:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(208);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(526);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__nav_nav_component__ = __webpack_require__(528);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__footer_footer_component__ = __webpack_require__(527);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(529);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__nav_nav_component__ = __webpack_require__(531);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__footer_footer_component__ = __webpack_require__(530);
 /* unused harmony export AppRouter */
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AppModule; });
 /**
@@ -38,7 +38,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AppRouter = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* WelcomeComponent */], pathMatch: 'full' },
-    { path: 'post', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(0).then((function (require) { resolve(__webpack_require__(696)['PostModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } }
+    { path: 'post', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(0).then((function (require) { resolve(__webpack_require__(699)['PostModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -71,7 +71,7 @@ AppModule = __decorate([
 
 /***/ },
 
-/***/ 526:
+/***/ 529:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -100,7 +100,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
         selector: 'app',
-        template: __webpack_require__(673)
+        template: __webpack_require__(676)
     }),
     __metadata("design:paramtypes", [])
 ], AppComponent);
@@ -123,7 +123,7 @@ WelcomeComponent = __decorate([
 
 /***/ },
 
-/***/ 527:
+/***/ 530:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -147,7 +147,7 @@ var FooterComponent = (function () {
 FooterComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
         selector: 'Footer',
-        template: __webpack_require__(674)
+        template: __webpack_require__(677)
     }),
     __metadata("design:paramtypes", [])
 ], FooterComponent);
@@ -156,7 +156,7 @@ FooterComponent = __decorate([
 
 /***/ },
 
-/***/ 528:
+/***/ 531:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -184,7 +184,7 @@ var NavComponent = (function () {
 NavComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
         selector: 'Nav',
-        template: __webpack_require__(675)
+        template: __webpack_require__(678)
     }),
     __metadata("design:paramtypes", [])
 ], NavComponent);
@@ -193,34 +193,34 @@ NavComponent = __decorate([
 
 /***/ },
 
-/***/ 673:
+/***/ 676:
 /***/ function(module, exports) {
 
 module.exports = "<div class=\"wrap\">\r\n\r\n  <div class=\"menu\">\r\n    <Nav></Nav>\r\n  </div>\r\n\r\n  <div id=\"content\"> \r\n\r\n    <div id=\"wpbody\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  \r\n  </div>\r\n\r\n\r\n  <Footer></Footer>\r\n</div>\r\n          "
 
 /***/ },
 
-/***/ 674:
+/***/ 677:
 /***/ function(module, exports) {
 
 module.exports = "<footer id=\"footer\">\r\n    <p class=\"copyright\"> \r\n    &copy; <a href=\"/\">kunl</a>\r\n    <a href=\"https://github.com/kunl\" target=\"_blank\">@GitHub</a>\r\n    </p>\r\n</footer>"
 
 /***/ },
 
-/***/ 675:
+/***/ 678:
 /***/ function(module, exports) {
 
 module.exports = "<div class=\"menu\">\r\n    <ul id=\"adminmenu\">\r\n        <li  [routerLink]=\"['/post']\">文章</li>\r\n        <li>新建</li>\r\n        <li>统计</li>\r\n    </ul>\r\n</div>\r\n"
 
 /***/ },
 
-/***/ 692:
+/***/ 695:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(392);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(393);
 
 
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -228,4 +228,4 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dyna
 
 /***/ }
 
-},[692]);
+},[695]);
