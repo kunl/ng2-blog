@@ -15,8 +15,12 @@ _router.get('/posts', (req, res, next) => {
         res.status(500);
     });
 });
-_router.get('/post/:title', (req, res, next) => {
-    res.render('post', { title: 'post list aaaaaa' });
+_router.get('/posts/:title', (req, res, next) => {
+    let title = req.params;
+    models_1.Post.findOne({ title }).exec(post => {
+        console.log(post);
+        res.json({ data: post });
+    });
 });
 _router.post('/posts', (req, res, next) => {
     console.log('### 新建 post ###');

@@ -23,15 +23,20 @@ _router.get('/posts', (req, res, next) => {
 });
 
 
-_router.get('/post/:title', (req, res, next) => {
-    res.render('post', {title: 'post list aaaaaa'})
+_router.get('/posts/:title', (req, res, next) => {
+    let title = req.params;
+    
+    Post.findOne({title}).exec(post => { 
+        console.log(post)
+        res.json({data: post})
+    })
 });
 
 
 
 _router.post('/posts', (req, res, next) => {
 
-    console.log('### 新建 post ###')
+    console.log('### 新建 post ###');
     console.log(req.body)
 
     Post.create(req.body).then(post => {
