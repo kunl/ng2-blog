@@ -1,12 +1,22 @@
 "use strict";
 const express_1 = require("express");
+const marked = require("marked");
+const hljs = require("highlight.js");
 const models_1 = require("../models");
+marked.setOptions({
+    highlight: (code, lang) => {
+        return hljs.highlight(lang, code).value;
+    }
+});
 let _router = express_1.Router();
 /* GET users listing. */
 _router.get('/posts', (req, res, next) => {
     console.log('### 查询 users ###');
     models_1.Post.find().exec().then(post => {
         console.log('查询到文章共', post.length, '条');
+        post.forEach(p => {
+            p.content = marked(p.content);
+        });
         res.json({
             data: post
         });
@@ -17,8 +27,10 @@ _router.get('/posts', (req, res, next) => {
 });
 _router.get('/posts/:title', (req, res, next) => {
     let title = req.params;
-    models_1.Post.findOne({ title }).exec(post => {
-        console.log(post);
+    console.log(title);
+    models_1.Post.findOne(title).exec().then(post => {
+        console.log('查找到', post._id);
+        post.content = marked(post.content);
         res.json({ data: post });
     });
 });

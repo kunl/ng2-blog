@@ -14,7 +14,7 @@ export class ListComponent implements OnInit{
 
     ngOnInit(){
         this._route.params
-            .map(params => params.id)
+            .map((params: {id: string}) => params.id)
             .subscribe((id) => {
                 console.log(id);
                 this.id = id;

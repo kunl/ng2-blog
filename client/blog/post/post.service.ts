@@ -13,6 +13,6 @@ export class PostService {
     }
     getById(id){
         let url = this._base_url + id;
-        return this._http.get(url).map(res => res.json());
+        return this._http.get(url).map(res => res.json()).map(res => res.data);
     }
 }

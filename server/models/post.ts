@@ -40,7 +40,7 @@ let _schema = new Schema({
   this.createdAt = this.createdAt || now;
   this.modifiedAt = now;
   next();
-});
+})
 
 export interface PostModel extends Model<IPost>{
 

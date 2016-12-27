@@ -1,12 +1,63 @@
 webpackJsonp([1],{
 
-/***/ 681:
+/***/ 679:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_module__ = __webpack_require__(688);
 Object.defineProperty(exports, "__esModule", { value: true });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(exports, "HomeModule", function() { return __WEBPACK_IMPORTED_MODULE_0__home_module__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__post_service__ = __webpack_require__(683);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__post_component__ = __webpack_require__(687);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__list_list_component__ = __webpack_require__(686);
+/* harmony export (binding) */ __webpack_require__.d(exports, "PostRouter", function() { return PostRouter; });
+/* harmony export (binding) */ __webpack_require__.d(exports, "PostModule", function() { return PostModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var PostRouter = [
+    {
+        path: '', component: __WEBPACK_IMPORTED_MODULE_5__post_component__["a" /* PostComponent */],
+        children: [
+            { path: 'list', component: __WEBPACK_IMPORTED_MODULE_6__list_list_component__["a" /* ListComponent */] }
+        ]
+    }
+];
+var PostModule = (function () {
+    function PostModule() {
+    }
+    return PostModule;
+}());
+PostModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_3__angular_http__["c" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */].forChild(PostRouter)
+        ],
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_5__post_component__["a" /* PostComponent */],
+            __WEBPACK_IMPORTED_MODULE_6__list_list_component__["a" /* ListComponent */]
+        ],
+        providers: [__WEBPACK_IMPORTED_MODULE_4__post_service__["a" /* PostService */]]
+    }),
+    __metadata("design:paramtypes", [])
+], PostModule);
 
 
 
@@ -18,7 +69,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(116);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return HomeService; });
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return PostService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -30,21 +81,63 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var HomeService = (function () {
-    function HomeService(_http) {
+var PostService = (function () {
+    function PostService(_http) {
         this._http = _http;
     }
-    HomeService.prototype.getPosts = function () {
-        return this._http.get('/api/posts')
-            .map(function (res) { return res.json(); })
-            .map(function (data) { return data.data; });
+    PostService.prototype.save = function (post) {
+        this._http.post('/api/posts', JSON.stringify(post))
+            .map(function (res) { return console.log(res); }).subscribe();
     };
-    return HomeService;
+    return PostService;
 }());
-HomeService = __decorate([
+PostService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
-], HomeService);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */]])
+], PostService);
+
+
+
+/***/ },
+
+/***/ 686:
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__post_service__ = __webpack_require__(683);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return ListComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ListComponent = (function () {
+    function ListComponent(_service) {
+        this._service = _service;
+    }
+    ListComponent.prototype.ngOnInit = function () {
+        this.submit();
+    };
+    ListComponent.prototype.submit = function () {
+        this._service.save(3333);
+        console.log(this);
+    };
+    return ListComponent;
+}());
+ListComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
+        selector: 'List',
+        template: __webpack_require__(697)
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__post_service__["a" /* PostService */]])
+], ListComponent);
 
 
 
@@ -55,8 +148,8 @@ HomeService = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_service__ = __webpack_require__(683);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return HomeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__post_service__ = __webpack_require__(683);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return PostComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -68,90 +161,43 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var HomeComponent = (function () {
-    function HomeComponent(_service) {
+var PostComponent = (function () {
+    function PostComponent(_service) {
         this._service = _service;
-        this.posts = [
-            { title: 'test1', content: 'content', createAt: '2016-12-1' },
-            { title: 'test1', content: 'content', createAt: '2016-12-1' },
-        ];
     }
-    HomeComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this._service.getPosts().subscribe(function (data) {
-            _this.posts = data;
-        });
+    PostComponent.prototype.submit = function () {
+        var post = {
+            title: this.title,
+            content: this.content
+        };
+        console.log(post);
+        this._service.save(post);
     };
-    return HomeComponent;
+    return PostComponent;
 }());
-HomeComponent = __decorate([
+PostComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
-        selector: 'Home',
-        template: __webpack_require__(691)
+        selector: 'Post',
+        template: __webpack_require__(698)
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__home_service__["a" /* HomeService */]])
-], HomeComponent);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__post_service__["a" /* PostService */]])
+], PostComponent);
 
 
 
 /***/ },
 
-/***/ 688:
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__home_component__ = __webpack_require__(687);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__home_service__ = __webpack_require__(683);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return HomeModule; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var HomeModule = (function () {
-    function HomeModule() {
-    }
-    return HomeModule;
-}());
-HomeModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
-        imports: [
-            __WEBPACK_IMPORTED_MODULE_2__angular_common__["b" /* CommonModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forChild([{
-                    path: '', component: __WEBPACK_IMPORTED_MODULE_4__home_component__["a" /* HomeComponent */]
-                }])
-        ],
-        declarations: [__WEBPACK_IMPORTED_MODULE_4__home_component__["a" /* HomeComponent */]],
-        providers: [
-            __WEBPACK_IMPORTED_MODULE_5__home_service__["a" /* HomeService */]
-        ]
-    }),
-    __metadata("design:paramtypes", [])
-], HomeModule);
-
-
-
-/***/ },
-
-/***/ 691:
+/***/ 697:
 /***/ function(module, exports) {
 
-module.exports = "<article id=\"post-2016/ng2-attribute-directive\" class=\"article article-type-post\" *ngFor=\"let post of posts\">\r\n\r\n    <div class=\"article-inner\">\r\n        <header class=\"article-header\">\r\n            <a class=\"article-date\">\r\n                <time datetime=\"2016-05-08T10:37:38.000Z\" itemprop=\"datePublished\">\r\n                    {{ post.modifiedAt }}  {{ post.author }}\r\n                </time>\r\n\r\n            </a>\r\n\r\n            <h1 itemprop=\"name\">\r\n                <a class=\"article-title\" href=\"/2016/ng2-attribute-directive/\">\r\n                    {{ post.title }}\r\n                </a>\r\n            </h1>\r\n        </header>\r\n\r\n        <div class=\"article-entry\" itemprop=\"articleBody\">\r\n            {{ post.content }}\r\n        </div>\r\n\r\n        <footer class=\"article-footer\">\r\n            <a href=\"http://kunl.in/2016/ng2-attribute-directive/#disqus_thread\" class=\"article-comment-link\">评论</a>\r\n            <ul class=\"article-tag-list\">\r\n                <li class=\"article-tag-list-item\"><a class=\"article-tag-list-link\" href=\"/tags/angular2/\">angular2</a></li>\r\n            </ul>\r\n        </footer>\r\n    </div>\r\n\r\n</article>"
+module.exports = "list"
+
+/***/ },
+
+/***/ 698:
+/***/ function(module, exports) {
+
+module.exports = "<input [(ngModel)]=\"title\" #ctrl=\"ngModel\" required> <br>\r\n<textarea name=\"\" [(ngModel)]=\"content\" id=\"\" cols=\"30\" rows=\"10\"></textarea> <br>\r\n<button (click)=\"submit()\" >Set value</button>\r\n\r\n<button [routerLink]=\"['/post', 'list']\">list</button>\r\n<router-outlet></router-outlet>"
 
 /***/ }
 

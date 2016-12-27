@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../post.service';
+import {Observable} from 'rxjs/rx';
+
 @Component({
     templateUrl: 'detail.component.html'
 })
 
 export class DetailComponent implements OnInit{
-
-    id: string;
-
+  
     constructor(
         private _route: ActivatedRoute,
         private _service: PostService
@@ -17,12 +17,12 @@ export class DetailComponent implements OnInit{
         console.log(this)
     }
 
+    post:{title: string, content: string};
     ngOnInit(){
         this._route.params
-            .map(params => params.id)
+            .map((params: {id: string}) => params.id)
             .subscribe((id) => {
                 console.log(id);
-                this.id = id;
 
                 this.getDetail(id);
             });
@@ -31,9 +31,8 @@ export class DetailComponent implements OnInit{
 
     getDetail(id){
         this._service.getById(id).subscribe(post => {
-            console.log(post)
-            this.post = post;
-        })
+             this.post = post
+        });
     }
 
 

@@ -17,7 +17,7 @@
         </header>
 
         <div class="article-entry" itemprop="articleBody">
-            {{ post.content }}
+            <article [innerHTML]='post.content'></article>
         </div>
 
         <footer class="article-footer">

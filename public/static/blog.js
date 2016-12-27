@@ -1,4 +1,4 @@
-webpackJsonp([5],{
+webpackJsonp([6],{
 
 /***/ 385:
 /***/ function(module, exports, __webpack_require__) {
@@ -39,13 +39,13 @@ var MyOptions = (function (_super) {
     __extends(MyOptions, _super);
     function MyOptions() {
         var _this = _super.apply(this, arguments) || this;
-        _this.headers = ({
+        _this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({
             'author': 'kunl-------------------'
         });
         return _this;
     }
     return MyOptions;
-}(__WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* BaseRequestOptions */]));
+}(__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* BaseRequestOptions */]));
 
 var AppModule = (function () {
     function AppModule() {
@@ -56,11 +56,11 @@ AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* RouterModule */].forRoot([
-                { path: '', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(7).then((function (require) { resolve(__webpack_require__(681)['HomeModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); }, pathMatch: 'full' },
-                { path: 'post', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(8).then((function (require) { resolve(__webpack_require__(692)['PostModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
-                { path: 'about', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(9).then((function (require) { resolve(__webpack_require__(680)['AboutModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+                { path: '', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(2).then((function (require) { resolve(__webpack_require__(681)['HomeModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); }, pathMatch: 'full' },
+                { path: 'post', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(0).then((function (require) { resolve(__webpack_require__(682)['PostModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+                { path: 'about', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(3).then((function (require) { resolve(__webpack_require__(680)['AboutModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
             ])
         ],
         declarations: [
@@ -68,7 +68,7 @@ AppModule = __decorate([
         ],
         providers: [
             {
-                provide: __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* BaseRequestOptions */], useClass: MyOptions
+                provide: __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* BaseRequestOptions */], useClass: MyOptions
             },
             {
                 provide: __WEBPACK_IMPORTED_MODULE_4__angular_common__["a" /* APP_BASE_HREF */], useValue: '/'

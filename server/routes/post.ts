@@ -1,6 +1,14 @@
 import { Router } from 'express';
-
+import * as marked from 'marked';
+import * as hljs from 'highlight.js';
 import { Post } from '../models';
+
+
+marked.setOptions({
+    highlight: (code, lang) => {
+        return hljs.highlight(lang, code).value
+    }
+})
 
 let _router = Router();
 
@@ -12,6 +20,9 @@ _router.get('/posts', (req, res, next) => {
 
     Post.find().exec().then(post => {
         console.log('查询到文章共', post.length, '条');
+        post.forEach(p => {
+            p.content = marked(p.content);
+        })
         res.json({
             data: post
         })
@@ -25,9 +36,10 @@ _router.get('/posts', (req, res, next) => {
 
 _router.get('/posts/:title', (req, res, next) => {
     let title = req.params;
-    
-    Post.findOne({title}).exec(post => { 
-        console.log(post)
+    console.log(title)
+    Post.findOne(title).exec().then(post => { 
+        console.log('查找到', post._id);
+        post.content = marked(post.content);
         res.json({data: post})
     })
 });

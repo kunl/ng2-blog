@@ -1,4 +1,4 @@
-webpackJsonp([4],{
+webpackJsonp([5],{
 
 /***/ 384:
 /***/ function(module, exports, __webpack_require__) {
@@ -38,7 +38,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AppRouter = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* WelcomeComponent */], pathMatch: 'full' },
-    { path: 'post', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(0).then((function (require) { resolve(__webpack_require__(679)['PostModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } }
+    { path: 'post', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(1).then((function (require) { resolve(__webpack_require__(679)['PostModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -49,7 +49,7 @@ AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* RouterModule */].forRoot(AppRouter)
         ],

@@ -4,7 +4,7 @@
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Http, HttpModule, BaseRequestOptions, RequestOption, Headers } from '@angular/http';
+import { Http, HttpModule, BaseRequestOptions, RequestOptions, Headers } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 
 
 export class MyOptions extends BaseRequestOptions {
-    headers: new Headers({
+    headers = new Headers({
         'author': 'kunl-------------------'
     })
 }
