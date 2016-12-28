@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 679:
+/***/ 684:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9,9 +9,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__post_service__ = __webpack_require__(683);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__post_component__ = __webpack_require__(687);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__list_list_component__ = __webpack_require__(686);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__post_service__ = __webpack_require__(688);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__post_component__ = __webpack_require__(692);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__list_list_component__ = __webpack_require__(691);
 /* harmony export (binding) */ __webpack_require__.d(exports, "PostRouter", function() { return PostRouter; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "PostModule", function() { return PostModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -63,7 +63,7 @@ PostModule = __decorate([
 
 /***/ },
 
-/***/ 683:
+/***/ 688:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -100,12 +100,12 @@ PostService = __decorate([
 
 /***/ },
 
-/***/ 686:
+/***/ 691:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__post_service__ = __webpack_require__(683);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__post_service__ = __webpack_require__(688);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return ListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -134,7 +134,7 @@ var ListComponent = (function () {
 ListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
         selector: 'List',
-        template: __webpack_require__(697)
+        template: __webpack_require__(702)
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__post_service__["a" /* PostService */]])
 ], ListComponent);
@@ -143,12 +143,12 @@ ListComponent = __decorate([
 
 /***/ },
 
-/***/ 687:
+/***/ 692:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__post_service__ = __webpack_require__(683);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__post_service__ = __webpack_require__(688);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return PostComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -178,7 +178,7 @@ var PostComponent = (function () {
 PostComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
         selector: 'Post',
-        template: __webpack_require__(698)
+        template: __webpack_require__(703)
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__post_service__["a" /* PostService */]])
 ], PostComponent);
@@ -187,14 +187,14 @@ PostComponent = __decorate([
 
 /***/ },
 
-/***/ 697:
+/***/ 702:
 /***/ function(module, exports) {
 
 module.exports = "list"
 
 /***/ },
 
-/***/ 698:
+/***/ 703:
 /***/ function(module, exports) {
 
 module.exports = "<input [(ngModel)]=\"title\" #ctrl=\"ngModel\" required> <br>\r\n<textarea name=\"\" [(ngModel)]=\"content\" id=\"\" cols=\"30\" rows=\"10\"></textarea> <br>\r\n<button (click)=\"submit()\" >Set value</button>\r\n\r\n<button [routerLink]=\"['/post', 'list']\">list</button>\r\n<router-outlet></router-outlet>"

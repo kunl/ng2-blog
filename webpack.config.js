@@ -36,13 +36,17 @@ let webpackConfig = {
                 'angular2-router-loader'
             ]
         }, {
+            test: /\.styl$/,
+            use: ['stylus-loader','to-string-loader', 'css-loader']
+        }, {
             test: /\.css$/,
-            include: `${__dirname}/src`,
-            loader: ['css-loader', 'style-loader']
-
+            use: ['to-string-loader', 'css-loader']
         }, {
             test: /\.html$/,
             loader: 'raw-loader'
+        }, {
+            test: /\.(jpg|png|gif)$/,
+            loader: 'url-loader?prefix=img/&limit=5000'
         }]
     },
 

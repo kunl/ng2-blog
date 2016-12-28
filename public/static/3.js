@@ -1,10 +1,10 @@
 webpackJsonp([3],{
 
-/***/ 680:
+/***/ 685:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__about_module__ = __webpack_require__(688);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__about_module__ = __webpack_require__(693);
 Object.defineProperty(exports, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(exports, "AboutComponent", function() { return __WEBPACK_IMPORTED_MODULE_0__about_module__["a"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(exports, "AboutModule", function() { return __WEBPACK_IMPORTED_MODULE_0__about_module__["b"]; });
@@ -13,7 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 
 /***/ },
 
-/***/ 688:
+/***/ 693:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";

@@ -38,7 +38,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AppRouter = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* WelcomeComponent */], pathMatch: 'full' },
-    { path: 'post', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(1).then((function (require) { resolve(__webpack_require__(679)['PostModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } }
+    { path: 'post', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* nsure */(1).then((function (require) { resolve(__webpack_require__(684)['PostModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -100,7 +100,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
         selector: 'app',
-        template: __webpack_require__(656)
+        template: __webpack_require__(658)
     }),
     __metadata("design:paramtypes", [])
 ], AppComponent);
@@ -147,7 +147,7 @@ var FooterComponent = (function () {
 FooterComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
         selector: 'Footer',
-        template: __webpack_require__(657)
+        template: __webpack_require__(659)
     }),
     __metadata("design:paramtypes", [])
 ], FooterComponent);
@@ -184,7 +184,8 @@ var NavComponent = (function () {
 NavComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
         selector: 'Nav',
-        template: __webpack_require__(658)
+        styles: [__webpack_require__(677)],
+        template: __webpack_require__(660)
     }),
     __metadata("design:paramtypes", [])
 ], NavComponent);
@@ -193,28 +194,35 @@ NavComponent = __decorate([
 
 /***/ },
 
-/***/ 656:
+/***/ 658:
 /***/ function(module, exports) {
 
 module.exports = "<div class=\"wrap\">\r\n\r\n  <div class=\"menu\">\r\n    <Nav></Nav>\r\n  </div>\r\n\r\n  <div id=\"content\"> \r\n\r\n    <div id=\"wpbody\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  \r\n  </div>\r\n\r\n\r\n  <Footer></Footer>\r\n</div>\r\n          "
 
 /***/ },
 
-/***/ 657:
+/***/ 659:
 /***/ function(module, exports) {
 
 module.exports = "<footer id=\"footer\">\r\n    <p class=\"copyright\"> \r\n    &copy; <a href=\"/\">kunl</a>\r\n    <a href=\"https://github.com/kunl\" target=\"_blank\">@GitHub</a>\r\n    </p>\r\n</footer>"
 
 /***/ },
 
-/***/ 658:
+/***/ 660:
 /***/ function(module, exports) {
 
 module.exports = "<div class=\"menu\">\r\n    <ul id=\"adminmenu\">\r\n        <li  [routerLink]=\"['/post']\">文章</li>\r\n        <li>新建</li>\r\n        <li>统计</li>\r\n    </ul>\r\n</div>\r\n"
 
 /***/ },
 
-/***/ 675:
+/***/ 677:
+/***/ function(module, exports) {
+
+throw new Error("Module build failed: ParseError: expected \"indent\", got \";\"\n    at Parser.error (D:\\code\\ng2-blog\\node_modules\\stylus\\lib\\parser.js:259:11)\n    at Parser.expect (D:\\code\\ng2-blog\\node_modules\\stylus\\lib\\parser.js:287:12)\n    at Parser.block (D:\\code\\ng2-blog\\node_modules\\stylus\\lib\\parser.js:845:12)\n    at Parser.selector (D:\\code\\ng2-blog\\node_modules\\stylus\\lib\\parser.js:1555:24)\n    at Parser.ident (D:\\code\\ng2-blog\\node_modules\\stylus\\lib\\parser.js:1446:25)\n    at Parser.stmt (D:\\code\\ng2-blog\\node_modules\\stylus\\lib\\parser.js:778:26)\n    at Parser.statement (D:\\code\\ng2-blog\\node_modules\\stylus\\lib\\parser.js:685:21)\n    at Parser.parse (D:\\code\\ng2-blog\\node_modules\\stylus\\lib\\parser.js:236:25)\n    at Renderer.render (D:\\code\\ng2-blog\\node_modules\\stylus\\lib\\renderer.js:80:22)\n    at D:\\code\\ng2-blog\\node_modules\\stylus-loader\\index.js:163:12\n    at tryCatchReject (D:\\code\\ng2-blog\\node_modules\\when\\lib\\makePromise.js:840:30)\n    at runContinuation1 (D:\\code\\ng2-blog\\node_modules\\when\\lib\\makePromise.js:799:4)\n    at Fulfilled.when (D:\\code\\ng2-blog\\node_modules\\when\\lib\\makePromise.js:590:4)\n    at Pending.run (D:\\code\\ng2-blog\\node_modules\\when\\lib\\makePromise.js:481:13)\n    at Scheduler._drain (D:\\code\\ng2-blog\\node_modules\\when\\lib\\Scheduler.js:62:19)\n    at Scheduler.drain (D:\\code\\ng2-blog\\node_modules\\when\\lib\\Scheduler.js:27:9)\n    at _combinedTickCallback (internal/process/next_tick.js:67:7)\n    at process._tickCallback (internal/process/next_tick.js:98:9)");
+
+/***/ },
+
+/***/ 680:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -228,4 +236,4 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dyna
 
 /***/ }
 
-},[675]);
+},[680]);
