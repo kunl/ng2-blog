@@ -14,7 +14,8 @@ import { AppComponent } from './app.component';
 
 export class MyOptions extends BaseRequestOptions {
     headers = new Headers({
-        'author': 'kunl-------------------'
+        'author': 'kunl-------------------',
+        'Content-Type': 'application/json'
     })
 }
 

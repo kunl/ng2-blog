@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 
 @Injectable()
 export class PostService {
-    constructor( private _http: Http){
+    constructor( private _http: Http, private headers: Headers){
 
     }
 
     save(post){
-        this._http.post('/api/posts', JSON.stringify(post))
+        console.log(this.headers)
+        this._http.post('/api/posts', JSON.stringify(post), {headers: this.headers})
             .map(res => console.log(res)).subscribe()
     }
 }

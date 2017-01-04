@@ -37,9 +37,9 @@ _router.get('/posts/:title', (req, res, next) => {
 _router.post('/posts', (req, res, next) => {
     console.log('### 新建 post ###');
     console.log(req.body);
-    models_1.Post.create(req.body).then(post => {
-        console.log(post);
-        res.redirect('/');
+    models_1.Post.create(req.body).then((post) => {
+        console.log(post['_id']);
+        res.json(post);
     }, err => {
         console.log(err);
         res.status(500);

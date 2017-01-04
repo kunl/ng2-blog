@@ -21,12 +21,10 @@ let _schema = new mongoose_1.Schema({
         }
     ],
     createdAt: {
-        type: Date,
-        required: false
+        type: Date
     },
     modifiedAt: {
-        type: Date,
-        required: false
+        type: Date
     }
 }).pre('save', function (next) {
     let now = new Date();

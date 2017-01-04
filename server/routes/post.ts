@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import * as marked from 'marked';
 import * as hljs from 'highlight.js';
-import { Post } from '../models';
+import { Post, IPost } from '../models';
 
 
 marked.setOptions({
@@ -51,9 +51,9 @@ _router.post('/posts', (req, res, next) => {
     console.log('### 新建 post ###');
     console.log(req.body)
 
-    Post.create(req.body).then(post => {
-        console.log(post);
-        res.redirect('/')
+    Post.create(req.body).then((post) => {
+        console.log(post['_id']);
+        res.json(post)
     }, err => {
         console.log(err)
         res.status(500)

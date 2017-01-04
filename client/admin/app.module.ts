@@ -4,7 +4,7 @@
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpModule, BaseRequestOptions, Headers } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common'
@@ -18,6 +18,14 @@ export const AppRouter: Routes = [
     { path: '', component: WelcomeComponent, pathMatch: 'full' },
     { path: 'post', loadChildren: './post/post.module#PostModule' }
 ]
+
+export function getHeaders (){
+    return  new Headers({
+        'author': 'kunl-------------------',
+        'Content-Type': 'application/json'
+    })
+}
+
 
 @NgModule({
     imports: [
@@ -33,6 +41,7 @@ export const AppRouter: Routes = [
         FooterComponent
     ],
     providers: [
+        { provide: Headers, useFactory: getHeaders},
         { provide: APP_BASE_HREF, useValue: '/admin' }
     ],
     bootstrap: [AppComponent],

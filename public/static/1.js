@@ -82,18 +82,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var PostService = (function () {
-    function PostService(_http) {
+    function PostService(_http, headers) {
         this._http = _http;
+        this.headers = headers;
     }
     PostService.prototype.save = function (post) {
-        this._http.post('/api/posts', JSON.stringify(post))
+        console.log(this.headers);
+        this._http.post('/api/posts', JSON.stringify(post), { headers: this.headers })
             .map(function (res) { return console.log(res); }).subscribe();
     };
     return PostService;
 }());
 PostService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */], __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]])
 ], PostService);
 
 
