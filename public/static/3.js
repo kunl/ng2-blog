@@ -1,10 +1,10 @@
 webpackJsonp([3],{
 
-/***/ 685:
+/***/ 682:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__about_module__ = __webpack_require__(693);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__about_module__ = __webpack_require__(690);
 Object.defineProperty(exports, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(exports, "AboutComponent", function() { return __WEBPACK_IMPORTED_MODULE_0__about_module__["a"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(exports, "AboutModule", function() { return __WEBPACK_IMPORTED_MODULE_0__about_module__["b"]; });
@@ -13,12 +13,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 
 /***/ },
 
-/***/ 693:
+/***/ 690:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(116);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AboutComponent; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "b", function() { return AboutModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {

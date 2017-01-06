@@ -1,15 +1,15 @@
 webpackJsonp([6],{
 
-/***/ 385:
+/***/ 386:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(519);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(521);
 /* unused harmony export MyOptions */
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AppModule; });
 /**
@@ -59,9 +59,9 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* RouterModule */].forRoot([
-                { path: '', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(2).then((function (require) { resolve(__webpack_require__(686)['HomeModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); }, pathMatch: 'full' },
-                { path: 'post', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(0).then((function (require) { resolve(__webpack_require__(687)['PostModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
-                { path: 'about', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(3).then((function (require) { resolve(__webpack_require__(685)['AboutModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+                { path: '', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(2).then((function (require) { resolve(__webpack_require__(683)['HomeModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); }, pathMatch: 'full' },
+                { path: 'post', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(0).then((function (require) { resolve(__webpack_require__(684)['PostModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
+                { path: 'about', loadChildren: function () { return new Promise(function (resolve) { __webpack_require__.e/* require.ensure */(3).then((function (require) { resolve(__webpack_require__(682)['AboutModule']); }).bind(null, __webpack_require__)).catch(__webpack_require__.oe); }); } },
             ])
         ],
         declarations: [
@@ -84,7 +84,7 @@ AppModule = __decorate([
 
 /***/ },
 
-/***/ 519:
+/***/ 521:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -128,13 +128,13 @@ module.exports = "<div id=\"wrap\">\r\n    <aside id=\"sidebar\">\r\n        <di
 
 /***/ },
 
-/***/ 681:
+/***/ 678:
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(385);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(386);
 
 
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -142,4 +142,4 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dyna
 
 /***/ }
 
-},[681]);
+},[678]);
