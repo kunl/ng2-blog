@@ -11,14 +11,14 @@
     "tsc:w": "tsc -w -p server"
   },
   "dependencies": {
-    "@angular/common": "^4.0.0-beta.2",
-    "@angular/compiler": "^4.0.0-beta.2",
-    "@angular/core": "^4.0.0-beta.2",
-    "@angular/forms": "^4.0.0-beta.2",
-    "@angular/http": "^4.0.0-beta.2",
-    "@angular/platform-browser": "^4.0.0-beta.2",
-    "@angular/platform-browser-dynamic": "^4.0.0-beta.2",
-    "@angular/router": "^4.0.0-beta.2",
+    "@angular/common": "^4.0.0-beta.3",
+    "@angular/compiler": "^4.0.0-beta.3",
+    "@angular/core": "^4.0.0-beta.3",
+    "@angular/forms": "^4.0.0-beta.3",
+    "@angular/http": "^4.0.0-beta.3",
+    "@angular/platform-browser": "^4.0.0-beta.3",
+    "@angular/platform-browser-dynamic": "^4.0.0-beta.3",
+    "@angular/router": "^4.0.0-beta.3",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "core-js": "^2.4.1",
@@ -54,6 +54,6 @@
     "to-string-loader": "^1.1.5",
     "typescript": "^2.0.10",
     "url-loader": "^0.5.7",
-    "webpack": "^2.2.0-rc.3"
+    "webpack": "^2.2.0-rc.4"
   }
 }

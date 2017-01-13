@@ -1,24 +1,24 @@
 webpackJsonp([3],{
 
-/***/ 682:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 683:
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__about_module__ = __webpack_require__(690);
 Object.defineProperty(exports, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__about_module__ = __webpack_require__(691);
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(exports, "AboutComponent", function() { return __WEBPACK_IMPORTED_MODULE_0__about_module__["a"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(exports, "AboutModule", function() { return __WEBPACK_IMPORTED_MODULE_0__about_module__["b"]; });
 
 
 
-/***/ },
+/***/ }),
 
-/***/ 690:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 691:
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(117);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AboutComponent; });
 /* harmony export (binding) */ __webpack_require__.d(exports, "b", function() { return AboutModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -26,9 +26,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
 
@@ -41,8 +38,7 @@ AboutComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
         selector: 'About',
         template: 'about'
-    }),
-    __metadata("design:paramtypes", [])
+    })
 ], AboutComponent);
 
 var AboutModule = (function () {
@@ -58,12 +54,11 @@ AboutModule = __decorate([
                 }])
         ],
         declarations: [AboutComponent]
-    }),
-    __metadata("design:paramtypes", [])
+    })
 ], AboutModule);
 
 
 
-/***/ }
+/***/ })
 
 });
