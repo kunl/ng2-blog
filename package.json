@@ -41,7 +41,7 @@
     "@types/highlight.js": "^9.1.8",
     "@types/marked": "0.0.28",
     "@types/mongoose": "^4.5.38",
-    "@types/node": "^6.0.52",
+    "@types/node": "^7.0.0",
     "angular2-router-loader": "^0.3.4",
     "angular2-template-loader": "^0.6.0",
     "awesome-typescript-loader": "^3.0.0-beta.17",
