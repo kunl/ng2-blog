@@ -1,26 +1,26 @@
 webpackJsonp([3],{
 
 /***/ 683:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__about_module__ = __webpack_require__(691);
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(exports, "AboutComponent", function() { return __WEBPACK_IMPORTED_MODULE_0__about_module__["a"]; });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(exports, "AboutModule", function() { return __WEBPACK_IMPORTED_MODULE_0__about_module__["b"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "AboutComponent", function() { return __WEBPACK_IMPORTED_MODULE_0__about_module__["a"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "AboutModule", function() { return __WEBPACK_IMPORTED_MODULE_0__about_module__["b"]; });
 
 
 
 /***/ }),
 
 /***/ 691:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(117);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AboutComponent; });
-/* harmony export (binding) */ __webpack_require__.d(exports, "b", function() { return AboutModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return AboutModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
