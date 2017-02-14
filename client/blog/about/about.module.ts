@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'About',
-    template: 'about'
+    templateUrl: 'about.component.html'
 })
 
 export class AboutComponent{}

@@ -1,43 +1,37 @@
 <div id="wrap">
     <aside id="sidebar">
         <div id="side-title" class="inner">
-        <h1 id="logo-wrap">
-            <a href="/" id="logo">kunl</a>
-        </h1>
+            <h1 id="logo-wrap">
+                <a href="/" id="logo">kunl</a>
+            </h1>
         </div>
         <nav class="sidebar-menu">
-        <ul>
-            <li><a class="link" [routerLink]="['/']">Home</a></li>
-            <li><a class="link" [routerLink]="['/post']">Archives</a></li>
-            <li><a class="link" [routerLink]="['/about']">About</a></li>
-            <li>
-            <a href="https://twitter.com/le720" target="_blank"><i class="iconfont icon-twitter"></i></a>
-            <a href="https://github.com/kunl" target="_blank"><i class="iconfont icon-github"></i></a>
-            </li>
-        </ul>
+            <ul>
+                <li><a class="link" [routerLink]="['/']">Home</a></li>
+                <li><a class="link" [routerLink]="['/post']">Archives</a></li>
+                <li><a class="link" [routerLink]="['/about']">About</a></li>
+                <li>
+                    <a href="https://twitter.com/le720" target="_blank"><i class="iconfont icon-twitter"></i></a>
+                    <a href="https://github.com/kunl" target="_blank"><i class="iconfont icon-github"></i></a>
+                </li>
+            </ul>
         </nav>
     </aside>
 
     <div class="outer">
 
-      <section id="main">
-          <router-outlet></router-outlet>
-      </section>
+        <section id="main">
+            <router-outlet></router-outlet>
+        </section>
 
     </div>
-    
+
     <footer id="footer">
-        <p class="copyright"> 
-        &copy; <a href="/">kunl</a>
-        <a href="https://github.com/kunl" target="_blank">@GitHub</a>
-        </p>
         <div class="outer">
-        <div id="footer-info" class="inner">
-            &copy; 2016 <a href="https://github.com/kunl">kunl</a><br> Powered by kunl
-        </div>
+            <div id="footer-info">
+                &copy; 2017 <a href="/">kunl</a><br> Powered by <a href="/">kunl</a> <a href="https://github.com/kunl" target="_blank">@GitHub</a>
+            </div>
         </div>
     </footer>
-    
+
 </div>
-
-
