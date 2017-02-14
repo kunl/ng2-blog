@@ -37,7 +37,7 @@ var AboutComponent = (function () {
 AboutComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
         selector: 'About',
-        template: 'about'
+        template: __webpack_require__(707)
     })
 ], AboutComponent);
 
@@ -58,6 +58,13 @@ AboutModule = __decorate([
 ], AboutModule);
 
 
+
+/***/ }),
+
+/***/ 707:
+/***/ (function(module, exports) {
+
+module.exports = "<section class=\"about\">\r\n    <h3>Angular + nodejs + express 驱动的一个博客</h3>\r\n    <p>\r\n        热爱前端工作，关注前端最新动态。\r\n    </p>\r\n    <p>\r\n        可以通过 github 或者 <a href=\"mailto:le720@outlook.com\">le720@outlook.com</a> 联系我。\r\n    </p>\r\n</section>"
 
 /***/ })
 

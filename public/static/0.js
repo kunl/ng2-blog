@@ -211,11 +211,12 @@ PostComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__post_component__ = __webpack_require__(698);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__list__ = __webpack_require__(696);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__detail__ = __webpack_require__(695);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__post_service__ = __webpack_require__(688);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__comment__ = __webpack_require__(706);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__post_service__ = __webpack_require__(688);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -223,6 +224,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -258,10 +260,11 @@ PostModule = __decorate([
         declarations: [
             __WEBPACK_IMPORTED_MODULE_4__post_component__["a" /* PostComponent */],
             __WEBPACK_IMPORTED_MODULE_5__list__["a" /* ListComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__detail__["a" /* DetailComponent */]
+            __WEBPACK_IMPORTED_MODULE_6__detail__["a" /* DetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__comment__["a" /* CommentComponent */]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_7__post_service__["a" /* PostService */]
+            __WEBPACK_IMPORTED_MODULE_8__post_service__["a" /* PostService */]
         ]
     })
 ], PostModule);
@@ -273,7 +276,7 @@ PostModule = __decorate([
 /***/ 703:
 /***/ (function(module, exports) {
 
-module.exports = "<article [innerHTML]=\"post?.content\"></article>"
+module.exports = "<div id=\"article-detail\">\r\n    <article [innerHTML]=\"post?.content\"></article>\r\n    <comment></comment>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -281,6 +284,61 @@ module.exports = "<article [innerHTML]=\"post?.content\"></article>"
 /***/ (function(module, exports) {
 
 module.exports = "list-ddsgs"
+
+/***/ }),
+
+/***/ 705:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommentComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CommentComponent = (function () {
+    function CommentComponent(_el) {
+        this._el = _el;
+    }
+    CommentComponent.prototype.ngOnInit = function () {
+        this.createElement();
+    };
+    CommentComponent.prototype.createElement = function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.setAttribute('data-timestamp', (new Date()).getTime().toString());
+        dsq.src = '//kunlin.disqus.com/embed.js';
+        this._el.nativeElement.appendChild(dsq);
+    };
+    return CommentComponent;
+}());
+CommentComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Component */])({
+        selector: 'comment',
+        template: "<div id=\"disqus_thread\"></div>"
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* ElementRef */]])
+], CommentComponent);
+
+
+
+/***/ }),
+
+/***/ 706:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__comment_component__ = __webpack_require__(705);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__comment_component__["a"]; });
+
+
 
 /***/ })
 

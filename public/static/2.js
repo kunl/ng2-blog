@@ -71,10 +71,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var HomeComponent = (function () {
     function HomeComponent(_service) {
         this._service = _service;
-        this.posts = [
-            { title: 'test1', content: 'content', createAt: '2016-12-1' },
-            { title: 'test1', content: 'content', createAt: '2016-12-1' },
-        ];
+        this.posts = [];
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -102,7 +99,7 @@ HomeComponent = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__home_component__ = __webpack_require__(692);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__home_service__ = __webpack_require__(687);
@@ -147,7 +144,7 @@ HomeModule = __decorate([
 /***/ 702:
 /***/ (function(module, exports) {
 
-module.exports = "<article id=\"post-2016/ng2-attribute-directive\" class=\"article article-type-post\" *ngFor=\"let post of posts\">\r\n\r\n    <div class=\"article-inner\">\r\n        <header class=\"article-header\">\r\n            <a class=\"article-date\">\r\n                <time datetime=\"2016-05-08T10:37:38.000Z\" itemprop=\"datePublished\">\r\n                    {{ post.modifiedAt }}  {{ post.author }}\r\n                </time>\r\n\r\n            </a>\r\n\r\n            <h1 itemprop=\"name\">\r\n                <a class=\"article-title\" [routerLink]=\"['post/', post.title]\">\r\n                    {{ post.title }}\r\n                </a>\r\n            </h1>\r\n        </header>\r\n\r\n        <div class=\"article-entry\" itemprop=\"articleBody\">\r\n            <article [innerHTML]='post.content'></article>\r\n        </div>\r\n\r\n        <footer class=\"article-footer\">\r\n            <a href=\"http://kunl.in/2016/ng2-attribute-directive/#disqus_thread\" class=\"article-comment-link\">评论</a>\r\n            <ul class=\"article-tag-list\">\r\n                <li class=\"article-tag-list-item\"><a class=\"article-tag-list-link\" href=\"/tags/angular2/\">angular2</a></li>\r\n            </ul>\r\n        </footer>\r\n    </div>\r\n\r\n</article>"
+module.exports = "<article id=\"post-2016/ng2-attribute-directive\" class=\"article article-type-post\" *ngFor=\"let post of posts\">\r\n\r\n    <div class=\"article-inner\">\r\n        <header class=\"article-header\">\r\n            <a class=\"article-date\">\r\n                <time datetime=\"2016-05-08T10:37:38.000Z\" itemprop=\"datePublished\">\r\n                    {{ post.modifiedAt | date : 'yyyy-MM-dd' }}  {{ post.author }}\r\n                </time>\r\n\r\n            </a>\r\n\r\n            <h1 itemprop=\"name\">\r\n                <a class=\"article-title\" [routerLink]=\"['post/', post.title]\">\r\n                    {{ post.title }}\r\n                </a>\r\n            </h1>\r\n        </header>\r\n\r\n        <div class=\"article-entry\" itemprop=\"articleBody\">\r\n            <article [innerHTML]='post.content'></article>\r\n        </div>\r\n\r\n        <footer class=\"article-footer\">\r\n            <a href=\"http://kunl.in/2016/ng2-attribute-directive/#disqus_thread\" class=\"article-comment-link\">评论</a>\r\n            <ul class=\"article-tag-list\">\r\n                <li class=\"article-tag-list-item\"><a class=\"article-tag-list-link\" href=\"/tags/angular2/\">angular2</a></li>\r\n            </ul>\r\n        </footer>\r\n    </div>\r\n\r\n</article>"
 
 /***/ })
 

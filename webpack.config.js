@@ -1,5 +1,6 @@
 let path = require('path');
 let webpack = require('webpack');
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 
@@ -20,7 +21,9 @@ let webpackConfig = {
 
         new webpack.optimize.CommonsChunkPlugin({
             name: ['admin', 'blog', 'vendor', 'polyfills']
-        })
+        }),
+
+        new ExtractTextPlugin('test.css')
 
     ],
     resolve: {
@@ -36,8 +39,14 @@ let webpackConfig = {
                 'angular2-router-loader'
             ]
         }, {
-            test: /\.styl$/,
-            use: ['stylus-loader','to-string-loader', 'css-loader']
+            // test: /\.styl$/,
+            // use: ExtractTextPlugin.extract({
+            //     fallback: 'style-loader',
+            //     use: [
+            //         { loader: 'css-loader', query: { modules: true, sourceMaps: true } },
+            //         { loader: 'stylus-loader'},
+            //     ]
+            // })
         }, {
             test: /\.css$/,
             use: ['to-string-loader', 'css-loader']

@@ -7,10 +7,7 @@ import { HomeService } from './home.service';
 })
 
 export class HomeComponent implements OnInit{
-    posts = [
-        {title: 'test1', content: 'content', createAt: '2016-12-1'},
-        {title: 'test1', content: 'content', createAt: '2016-12-1'},
-    ];
+    posts = [];
 
     constructor(private _service: HomeService){
         

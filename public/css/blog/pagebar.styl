@@ -1,0 +1,49 @@
+#page-nav
+  margin: 50px auto
+  background: #fff
+  -webkit-box-shadow: 1px 2px 3px #ddd
+  box-shadow: 1px 2px 3px #ddd
+  border: 1px solid #ececec
+  -webkit-border-radius: 3px
+  border-radius: 3px
+  text-align: center
+  color: #999
+  overflow: hidden
+
+#page-nav:before,
+#page-nav:after
+  content: ""
+  display: table
+
+#page-nav:after
+  clear: both
+
+#page-nav a,
+#page-nav span
+  padding: 10px 20px
+
+#page-nav a
+  color: #999
+  text-decoration: none
+
+#page-nav a:hover
+  background: #999
+  color: #fff
+
+#page-nav .prev
+  float: left
+
+#page-nav .next
+  float: right
+
+#page-nav .page-number
+  display: inline-block
+
+
+
+#page-nav .current
+  color: #555
+  font-weight: bold
+
+#page-nav .space
+  color: #ececec
