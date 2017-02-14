@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common'
 import { PostComponent } from './post.component';
 import { ListComponent } from './list';
 import { DetailComponent } from './detail';
+import { CommentComponent } from './comment'
 
 import { PostService } from './post.service'
 
@@ -34,7 +35,8 @@ import { PostService } from './post.service'
     declarations: [
         PostComponent,
         ListComponent,
-        DetailComponent
+        DetailComponent,
+        CommentComponent
     ],
     providers: [
         PostService
