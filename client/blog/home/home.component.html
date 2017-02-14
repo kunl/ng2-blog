@@ -4,7 +4,7 @@
         <header class="article-header">
             <a class="article-date">
                 <time datetime="2016-05-08T10:37:38.000Z" itemprop="datePublished">
-                    {{ post.modifiedAt }}  {{ post.author }}
+                    {{ post.modifiedAt | date : 'yyyy-MM-dd' }}  {{ post.author }}
                 </time>
 
             </a>
