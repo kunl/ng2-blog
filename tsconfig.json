@@ -7,6 +7,7 @@
     "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
+    "baseUrl": "",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -16,10 +17,6 @@
     ],
     "noEmitHelpers": false
   },
-  "include": [
-    "./src/**/*.module.ts",
-    "./src/*.d.ts"
-  ],
   "exclude": [
     "node_modules"
   ]
