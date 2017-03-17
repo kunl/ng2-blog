@@ -1,5 +1,5 @@
-  <%- include('common/head') %>
-  <%- include('common/highlight') %>
+<%- include('common/head') %>
+
  
 </head>
 <body>
@@ -13,7 +13,7 @@
       <section id="main">
 
         <%# 文章列表 %>
-        <%- include('post/index', {post: list}) %>
+        <%- include('post/list', {post: list}) %>
 
       </section>
     </div>
@@ -34,7 +34,7 @@
   })();
 </script>
 
-
+  <%- include('common/highlight') %>
 </body>
 
 </html>

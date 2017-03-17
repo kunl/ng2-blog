@@ -1,25 +1,55 @@
+  <%- include('common/head') %>
+  <%- include('common/highlight') %>
+ 
+</head>
+<body>
+
+  <div id="wrap">
+
+    <%# 侧边菜单 %>
+    <%- include('common/sidebar') %>
+
+    <div class="outer">
+      <section id="main">
+
+        <article id="article-detail"  class="article article-type-post" >
+            <header class="article-header">
+             <h1 class="article-title">
+                 <%= post.title %>
+                 
+              </h1>
+
+              <small>阅读次数: <%= post.viewTimes %></small>
+              <time class="article-date"><%= post.createdAt %></time>
+
+          </header>
+
+            <div><%- post.content %></div>
+            
+
+            <div id="disqus_thread"></div>
+         </article>   
+      </section>
+    </div>
+
+     <%- include('common/footer') %>
+    
+  </div>
+
+  <script>
+
+  (function(){
+      let dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.setAttribute('data-timestamp',  (new Date()).getTime().toString());
+        dsq.src = '//kunlin.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
 
 
-<h3>post list</h3>
+</body>
 
-<%= title %>
-
-<ul>
-    <% list.forEach( post => {%>
-        <li>
-            <h3><%= post.title %></h3>
-            <p><%= post.content %></p>
-            <p>创建于:<%= post.createdAt %></p>
-        </li>
-    <% }) %>
-</ul>
+</html>
 
 
-
-<form method="post" action="/post">
-    <input type="text" name="title">
-    <br>
-    <textarea name="content" id="" cols="30" rows="10"></textarea>
-
-    <button>提交</button>
-</form>

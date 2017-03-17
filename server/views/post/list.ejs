@@ -1,0 +1,38 @@
+<% post.forEach( item => { %>
+<article  class="article article-type-post" >
+
+    <div class="article-inner">
+
+
+    <header class="article-header">
+        <a class="article-date">
+            <time datetime="2016-05-08T10:37:38.000Z" ><%= item.createdAt %></time>
+        </a>
+
+
+        <h1 itemprop="name">
+            <a class="article-title" href="/post/<%= item.id %>"><%= item.title %></a>
+        </h1>
+
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+
+        <%- item.intro %>
+       
+    </div>
+
+
+    <footer class="article-footer">
+
+   
+        <ul class="article-tag-list">
+        <li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular2/">angular2</a></li>
+        </ul>
+        <small>阅读次数: <%= item.viewTimes %></small>
+    </footer>
+    </div>
+
+</article>
+<% }) %>
