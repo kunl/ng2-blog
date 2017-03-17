@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 // import User from '../models/user';
 let router = express_1.Router();
@@ -36,6 +37,5 @@ router.post('/', (req, res) => {
     //     }
     // });
 });
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = router;
 //# sourceMappingURL=login.js.map

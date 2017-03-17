@@ -1,45 +1,42 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const marked = require("marked");
+const moment = require("moment");
 const models_1 = require("../models");
 class PostController {
-    constructor() {
-        this._post = models_1.Post;
+    constructor(postModel) {
+        this.postModel = postModel;
     }
-    find() {
+    findOne(id) {
+        this.updateViewTimes(id);
         return new Promise((resolve, reject) => {
-            this._post
-                .find()
-                .populate('tags')
-                .sort({ createdAt: -1 })
-                .limit(10)
-                .exec((err, res) => {
-                console.log('查找列表 成功 ！！！');
-                if (err) {
-                    reject(err);
-                }
-                else {
-                    if (res.length) {
-                        res.forEach((post) => {
-                            post.content = marked(post.content);
-                        });
-                        resolve(res);
-                    }
-                    else {
-                        resolve(null);
-                    }
-                }
+            this.postModel.getOne(id).then(data => {
+                let post = data[0];
+                post.content = marked(post.content);
+                post.createdAt = moment(post.createdAt).format('YYYY-MM-DD');
+                resolve(post);
             });
         });
     }
-    new(post) {
+    find() {
         return new Promise((resolve, reject) => {
-            this._post.create(post).then((p) => {
-                resolve(p);
-            }, err => {
-                reject(err);
+            this.postModel.getList().then(data => {
+                let post_ids = [];
+                data.forEach((post, index) => {
+                    post.createdAt = moment(post.createdAt).format('YYYY-MM-DD');
+                    post_ids.push(post.id);
+                });
+                resolve(data);
+            });
+        });
+    }
+    updateViewTimes(id) {
+        return new Promise((resolve, reject) => {
+            this.postModel.updateViewTimes(id).then(data => {
+                resolve(data);
             });
         });
     }
 }
-exports.post = new PostController();
+exports.post = new PostController(new models_1.Post);
 //# sourceMappingURL=index.js.map
