@@ -160,7 +160,8 @@ body
 
 
 
-
+small
+    color: #989898
 
 .article-date
   float: right
@@ -170,7 +171,7 @@ body
 
 
 .article-header
-  padding: 20px
+  padding: 20px 0
 
 .article-title
   text-decoration: none
@@ -178,25 +179,10 @@ body
   font-weight: bold
   color: #555
   line-height: 1.1em
-  -webkit-transition: color 0.2s
-  -moz-transition: color 0.2s
-  -ms-transition: color 0.2s
   transition: color 0.2s
 
 a.article-title:hover
   color: #333
-
-.article-entry
-  color: #555
-  padding: 0 20px
-
-.article-entry:before,
-.article-entry:after
-  content: ""
-  display: table
-
-.article-entry:after
-  clear: both
 
 .article-entry p,
 .article-entry table
@@ -334,9 +320,15 @@ a.article-title:hover
     margin: 3em 0
 
 // 文章详情页面
+.hljs
+    border-radius: 4px
 #article-detail 
     margin: 3em 0
-    line-height: 1.8
+    line-height: 2
+    color: #757373
+
+    img
+        border-radius: 4px
  
     a
         color: content-link-color
@@ -344,3 +336,4 @@ a.article-title:hover
 // disqus 评论
 #disqus_thread
     margin-top: 3em    
+    

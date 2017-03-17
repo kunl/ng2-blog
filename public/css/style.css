@@ -52,6 +52,9 @@
 #page-nav .space {
   color: #ececec;
 }
+#logo-wrap a {
+  color: #fff;
+}
 section.main {
   min-height: 100%;
   padding-bottom: 100px;
@@ -204,13 +207,16 @@ body {
 .widget h4 {
   font-size: 1.2em;
 }
+small {
+  color: #989898;
+}
 .article-date {
   float: right;
   color: #acacac;
   text-decoration: none;
 }
 .article-header {
-  padding: 20px;
+  padding: 20px 0;
 }
 .article-title {
   text-decoration: none;
@@ -218,25 +224,10 @@ body {
   font-weight: bold;
   color: #555;
   line-height: 1.1em;
-  -webkit-transition: color 0.2s;
-  -moz-transition: color 0.2s;
-  -ms-transition: color 0.2s;
   transition: color 0.2s;
 }
 a.article-title:hover {
   color: #333;
-}
-.article-entry {
-  color: #555;
-  padding: 0 20px;
-}
-.article-entry:before,
-.article-entry:after {
-  content: "";
-  display: table;
-}
-.article-entry:after {
-  clear: both;
 }
 .article-entry p,
 .article-entry table {
@@ -366,9 +357,16 @@ a.article-title:hover {
 #main {
   margin: 3em 0;
 }
+.hljs {
+  border-radius: 4px;
+}
 #article-detail {
   margin: 3em 0;
-  line-height: 1.8;
+  line-height: 2;
+  color: #757373;
+}
+#article-detail img {
+  border-radius: 4px;
 }
 #article-detail a {
   color: #4f5db0;
