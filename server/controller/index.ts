@@ -1,51 +1,50 @@
 import * as marked from 'marked';
-import { Post, PostModel, IPost } from '../models';
+import * as moment from 'moment';
+import { Post, IPost } from '../models';
 
 class PostController {
-    _post: PostModel;
+    
+    constructor(private postModel: Post) {}
 
-    constructor() {
-        this._post = Post;
+    findOne(id) {
+        this.updateViewTimes(id);
+
+        return new Promise<IPost>((resolve, reject) => {
+            this.postModel.getOne(id).then(data => {
+                let post = data[0];
+                    post.content = marked(post.content);
+                    post.createdAt = moment(post.createdAt).format('YYYY-MM-DD')
+                resolve(post)
+            })
+        })
     }
+
 
     find() {
+        return new Promise<IPost[]>((resolve, reject) => {
+            this.postModel.getList().then(data => {
+                  let post_ids = [];
 
-        return new Promise <IPost[]>((resolve, reject) => {
-            this._post
-                .find()
-                .populate('tags')
-                .sort({ createdAt: -1 })
-                .limit(10)
-                .exec((err, res) => {
-                    console.log('查找列表 成功 ！！！');
-                    if (err) {
-                        reject(err);
-                    }
-                    else {
-                        if (res.length) {
-                            res.forEach((post) => {
-                                post.content = marked(post.content)
-                            });
-                            resolve(res);
-                        }
-                        else {
-                            resolve(null);
-                        }
-                    }
-            });
+                data.forEach((post, index) => {
+                    post.createdAt = moment(post.createdAt).format('YYYY-MM-DD')
+                    post_ids.push(post.id)
+                })
+            
+                resolve(data)
+            })
         });
     }
+    
 
-    new(post: any) {
-        return new Promise <IPost[]>((resolve, reject) => {
-            this._post.create(post).then((p :any) => {
-                resolve(p)
-            }, err => {
-                reject(err);
+    updateViewTimes(id) {
+        return new Promise<IPost[]>((resolve, reject) => {
+            this.postModel.updateViewTimes(id).then(data => {
+                resolve(data)
             })
         });
     }
 
+
 }
 
-export let post = new PostController();
+export let post = new PostController(new Post);

@@ -7,7 +7,7 @@ import { json, urlencoded } from 'body-parser';
 import * as webpack from 'webpack';
 
 // 路径为 dist/server/app
-import './db';
+import pool from './db';
 
 import router from './routes';
 
@@ -25,17 +25,10 @@ app.use(cookieParser());
 
 app.use(express.static(path.join('public')));
 
+import {home} from './routes/home'
+app.use('/', home)
 
 app.use('/api', router);
-
-
-app.use('/admin', (req, res) => {
-    res.render('admin', { title: 'kunl 管理' })
-})
-app.use('/*', (req, res) => {
-    res.render('blog', { title: 'kunl' })
-})
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -71,4 +64,4 @@ app.use(<express.ErrorRequestHandler>function (err, req, res, next) {
 });
 
 
-export = app;
+export { app };

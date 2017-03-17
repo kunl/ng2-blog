@@ -1,47 +1,68 @@
-import * as mongoose from 'mongoose';
-import { Schema, Document, Model } from 'mongoose';
+import pool from '../db'
 
-export let ObjectId = mongoose.Schema.Types.ObjectId;
+let sql = {
+    find_all_post: 'SELECT id,title, intro, createdAt, viewTimes FROM POST',
+    find_one_post : 'SELECT id, title, content, intro, createdAt, viewTimes FROM post WHERE id = ?',
+    update_view_times: 'UPDATE post SET viewTimes = (viewTimes + 1) WHERE id = ?'
+};
 
-export interface IPost extends Document {
-  title: string;
-  content: string;
-  tags: string[]
-}
+class Post {
 
-let _schema = new Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  content: {
-    type: String,
-    required: true
-  },
-  author: {
-    type: String
-  },
-  tags: [
-    {
-      type: ObjectId,
-      ref: 'tags'
+    getList() {
+        return new Promise<IPost[]>((resolve, reject) => {
+            pool.getConnection((err, connect) => {
+                if (err) {
+                    console.log('err');
+                }
+                connect.query(sql.find_all_post, (err, rows) => {
+                    if (err) console.log(err)
+                    console.log(rows.length)
+                  
+                    resolve(rows);
+                    connect.release();
+                })
+            })
+        })
     }
-  ],
-  createdAt: {
-    type: Date
-  },
-  modifiedAt: {
-    type: Date
-  }
-}).pre('save', function (next) {
-  let now = new Date();
-  this.createdAt = this.createdAt || now;
-  this.modifiedAt = now;
-  next();
-})
 
-export interface PostModel extends Model<IPost>{
+    getOne(id: string) {
+        return new Promise<IPost[]>((resolve, reject) => {
+            pool.getConnection((err, connect) => {
+                if (err) {
+                    console.log('err');
+                }
+                connect.query(sql.find_one_post, id, (err, rows) => {
+                    if (err) console.log(err)
+                    resolve(rows);
+                    connect.release();
+                })
+            })
+        })
+    }
 
+    updateViewTimes(id: string) {
+        return new Promise<any>((resolve, reject) => {
+            pool.getConnection((err, connect) => {
+                if (err) {
+                    console.log('err');
+                }
+                connect.query(sql.update_view_times, id, (err, rows, fields) => {
+                    if (err) console.log(err)
+                    resolve()
+                    connect.release();
+                })
+            })
+        })
+    }
 }
 
-export let Post = mongoose.model<IPost>('posts', _schema);
+interface IPost {
+    id: number,
+    title: string,
+    intro: string,
+    content: string,
+    createdAt: string,
+    viewTimes: number
+}
+
+export { Post, IPost }

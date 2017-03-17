@@ -1,26 +1,41 @@
-import { Router } from 'express';
-import { Post, PostModel, IPost } from '../models';
+import { Router, Request } from 'express';
 let _router = Router();
 
-import { post }  from '../controller';
+import { post } from '../controller';
 
+import * as marked from 'marked';
 
-/* GET home page. */
-_router.get('/index', (req, res, next) => {
-    res.redirect('/')
-});
 
 _router.get('/', (req, res, next) => {
+    console.log('home...')
 
     post.find().then(list => {
         console.log(`渲染列表 共 ${list.length}条`);
-        res.render('admin', { title: '列表', list: list })
+        res.render('index', { title: '列表', list: list })
     }, err => {
         console.log(err);
-        res.status(500)
     });
 
 });
+
+_router.get('/post/:id', (req, res, next) => {
+    console.log('detail...')
+    
+    post.findOne(req.params.id).then(data => {
+        res.render('post', { title: data.title, post: data })
+    }, err => {
+        console.log(err);
+    })
+});
+
+_router.get('/about', (req, res) => {
+    res.render('about', {title: '关于'});
+})
+
+
+_router.get('/admin', (req, res) => {
+    res.render('admin', { title: 'kunl 管理' })
+})
 
 
 export let home = _router;
